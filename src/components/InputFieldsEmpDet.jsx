@@ -42,12 +42,12 @@ const InputFields = () => {
                     </div>
                     <div className="row mb-1">
                         <div className="col-md-6">
-                            <select className="entry-input form-control mb-2 fieldcolor" name="departmentlist" id="departmentlist">
+                            <select className="entry-input form-control mb-2 fieldcolor" name="dateofbirth" id="dateofbirth">
                                 <option value="">- - - Select Birthday - - -</option>
                             </select>        
                         </div>
                         <div className="col-md-6">
-                            <select className="entry-input form-control fieldcolor" name="positionlist" id="positionlist">
+                            <select className="entry-input form-control fieldcolor" name="address" id="address">
                                 <option value="">- - - Select Address - - -</option>
                             </select>       
                         </div>
@@ -55,21 +55,21 @@ const InputFields = () => {
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <label className="form-label">Emergency Contact Name</label>
-                            <input id="contactnumber" name="contactnumber" type="tel" className="form-control fieldcolor" placeholder="Enter emergency name"/>
+                            <input id="emergencycontactname" name="emergencycontactname" type="tel" className="form-control fieldcolor" placeholder="Enter emergency name"/>
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Emergency Contact Number</label>
-                            <input id="email" name="email" type="email" className="form-control fieldcolor" placeholder="Enter emergency number"/>
+                            <input id="emergencycontactnumber" name="emergencycontactnumber" className="form-control fieldcolor" placeholder="Enter emergency number"/>
                         </div>
                     </div>
                     <div className="row mb-4">
                         <div className="col-md-6">
-                            <select className="entry-input form-control mb-2 fieldcolor" name="departmentlist" id="departmentlist">
+                            <select className="entry-input form-control mb-2 fieldcolor" name="nationality" id="nationality">
                                 <option value="">- - - Select Nationality - - -</option>
                             </select>        
                         </div>
                         <div className="col-md-6">
-                            <select className="entry-input form-control fieldcolor" name="positionlist" id="positionlist">
+                            <select className="entry-input form-control fieldcolor" name="maritalstatus" id="maritalstatus">
                                 <option value="">- - - Select Marital Status - - -</option>
                             </select>       
                         </div>

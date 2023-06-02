@@ -1,10 +1,10 @@
 import React from "react";
 
-const DynamicTable = ({ columns, data }) => {
+const DynamicTable = ({ columns, data,title }) => {
   return (
     <div className="card shadow mb-4 tablemargin tablecolor">
       <div className="card-header py-3">
-        <h6 className="m-0 font-weight-bold table-title">DataTables Example</h6>
+        <h6 className="m-0 font-weight-bold table-title">{(title)}</h6>
       </div>
       <div className="card-body">
         <div className="table-responsive">

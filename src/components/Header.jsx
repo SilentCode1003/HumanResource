@@ -15,7 +15,7 @@ const Header = () => {
     <li className="dropdown dropdownhover"><a href="#"><span>Employee</span> <i className="bi bi-chevron-down"></i></a>
       <ul>
         <li><a className="navbardrophover" href="/EmployeeDetails">Employee Details</a></li>
-        <li><a className="navbardrophover" href="#">Employee Government ID</a></li>
+        <li><a className="navbardrophover" href="/EmployeeGovernmentID">Employee Government ID</a></li>
         <li><a className="navbardrophover" href="#">Employment Details</a></li>
         <li><a className="navbardrophover" href="#">Employee Education</a></li>
         <li><a className="navbardrophover" href="#">Employee Work Experience</a></li>

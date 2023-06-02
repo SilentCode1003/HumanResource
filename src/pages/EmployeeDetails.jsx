@@ -17,7 +17,7 @@ function EmployeeDetails() {
 
       <Header />
       <InputFields />
-      <DynamicTable columns={tableColumns} data={tableData} />
+      <DynamicTable columns={tableColumns} data={tableData} title="Employee Details Table"/>
       <Footer />
     </>
   )
