@@ -1,5 +1,5 @@
 
-const InputFields = () => {
+const InputFieldsEmpGovID = () => {
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
@@ -29,7 +29,7 @@ const InputFields = () => {
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">TIN ID</label>
-                            <input id="tinid" name="tinid" className="form-control fieldcolor" placeholder="Enter your email add"/>
+                            <input id="tinid" name="tinid"  className="form-control fieldcolor" placeholder="Enter your email add"/>
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
@@ -45,4 +45,4 @@ const InputFields = () => {
     )
 }
 
-export default InputFields
+export default InputFieldsEmpGovID

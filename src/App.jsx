@@ -46,77 +46,7 @@ function App() {
 
         
 
-    <section id="services" className="services">
-      <div className="container" data-aos="fade-up">
-
-        <div className="section-title">
-          <h2>Services</h2>
-          <p className='pwhiten'>Check our Services</p>
-        </div>
-
-        <div className="row">
-          <div className="col-md-4 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-webcam iconcolor"></i></div>
-              <h4><a className='content2' href="">Installation and repair of Surveilance system/CCTV</a></h4>
-            </div>
-          </div>
-
-          <div className="col-md-4 align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-cpu iconcolor"></i></div>
-              <h4><a className='content2' href="">Electrical Design and Installation</a></h4>
-            </div>
-          </div>
-
-          <div className="col-md-4 align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-sun iconcolor"></i></div>
-              <h4><a className='content2' href="">Solar Panel Design and Installation</a></h4>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-4 align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-lightbulb iconcolor"></i></div>
-              <h4><a className='content2' href="">LED Lighting Supply and Installation/PABX Design and Installation</a></h4>
-            </div>
-          </div>
-
-          <div className="col-md-4 align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-share iconcolor"></i></div>
-              <h4><a className='content2' href="">Structured Cabling Design and Installation</a></h4>
-            </div>
-          </div>
-
-          <div className="col-md-4 align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-person-gear iconcolor"></i></div>
-              <h4><a className='content2' href="">IT support</a></h4>
-            </div>
-          </div>
-        </div>
-        
-        <div className="row">
-          <div className="col-md-6 align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-tools iconcolor"></i></div>
-              <h4><a className='content2' href="">Industrial Board Repair</a></h4>
-            </div>
-          </div>
-
-          <div className="col-md-6 align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div className="icon-box content2">
-              <div className="icon iconcolor"><i className="bi bi-house-check iconcolor"></i></div>
-              <h4><a className='content2' href="">Civil Works/Landscaping/Door Access</a></h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
   </main>
     </>
   )

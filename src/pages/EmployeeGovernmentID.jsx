@@ -2,7 +2,7 @@ import '../assets/style2.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import DynamicTable from '../components/DynamicTable'
-import InputFields from '../components/InputFieldsEmpGovID'
+import InputFieldsEmpGovID from '../components/InputFieldsEmpGovID'
 
 
 function EmployeeGovernmentID() {
@@ -16,9 +16,8 @@ function EmployeeGovernmentID() {
     <>
 
       <Header />
-      <InputFields />
+      <InputFieldsEmpGovID />
       <DynamicTable columns={tableColumns} data={tableData} title="Employee Government ID Table"/>
-      <Footer />
     </>
   )
 }

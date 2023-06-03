@@ -2,7 +2,7 @@ import '../assets/style2.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import DynamicTable from '../components/DynamicTable'
-import InputFields from '../components/InputFieldsEmpDet'
+import InputFieldsEmpDet from '../components/InputFieldsEmpDet'
 
 
 function EmployeeDetails() {
@@ -16,9 +16,8 @@ function EmployeeDetails() {
     <>
 
       <Header />
-      <InputFields />
+      <InputFieldsEmpDet />
       <DynamicTable columns={tableColumns} data={tableData} title="Employee Details Table"/>
-      <Footer />
     </>
   )
 }

@@ -1,5 +1,5 @@
 
-const InputFields = () => {
+const InputFieldsEmpDet = () => {
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
@@ -87,4 +87,4 @@ const InputFields = () => {
     )
 }
 
-export default InputFields
+export default InputFieldsEmpDet
