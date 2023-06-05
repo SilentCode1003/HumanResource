@@ -5,6 +5,7 @@ import App from './App.jsx'
 import EmployeeDetails from './pages/EmployeeDetails.jsx';
 import EmployeeGovernmentID from './pages/EmployeeGovernmentID.jsx';
 import EmployementDetails from './pages/EmployementDetails.jsx';
+import EmployeeEducation from './pages/EmployeeEducation.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/EmployeeDetails" element={<EmployeeDetails />} />
       <Route path="/EmployeeGovernmentID" element={<EmployeeGovernmentID />} />
       <Route path="/EmployementDetails" element={<EmployementDetails />} />
+      <Route path="/EmployeeEducation" element={<EmployeeEducation />} />
 
     </Routes>
   </BrowserRouter>

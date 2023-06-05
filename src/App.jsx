@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import './assets/style2.css'
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.min.css'
+import about from './assets/img/hero-bg.jpg';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
 
         <div className="row">
           <div className="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="src\assets\img\about.jpg" className="img-fluid" alt=""/>
+            <img src={about} className="img-fluid" alt=""/>
           </div>
           <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content content1" data-aos="fade-right" data-aos-delay="100">
             <h3 className='h3whiten'>Company Profile</h3>

@@ -3,7 +3,7 @@ const InputFieldsEmpDet = () => {
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
-            <div className="card inpufieldmargin inputfieldcolors">
+            <div className="card inpufieldmargin inputfieldcolors shadow">
                 <div className="card-body inputfieldcolors">
                     <div className="row">
                         <div className="col-md-12 mb-2">

@@ -3,7 +3,7 @@ const InputFieldsEmploymentDet = () => {
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
-            <div className="card inpufieldmargin inputfieldcolors">
+            <div className="card inpufieldmargin inputfieldcolors shadow">
                 <div className="card-body inputfieldcolors">
                     <div className="row">
                         <div className="col-md-12 mb-2">
@@ -15,7 +15,9 @@ const InputFieldsEmploymentDet = () => {
                     <div className="row mb-4">
                         <div className="col-md-4">
                             <label className="form-label">Department</label>
-                            <input id="department" name="department" type="text" className="form-control fieldcolor" placeholder="Enter department"/>
+                            <select className="entry-input form-control mb-2 fieldcolor" name="department" id="department">
+                                <option value="">- - - Select Department - - -</option>
+                            </select>
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Date of Hired</label>

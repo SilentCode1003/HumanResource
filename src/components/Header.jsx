@@ -1,5 +1,5 @@
 import { Nav } from "react-bootstrap";
-import logo from '../assets/img/5L_logo.png';
+import logo from '../assets/img/5L_logo-black2.png';
 
 const Header = () => {
   return (
@@ -35,7 +35,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a className="navbardrophover" href="#">
+              <a className="navbardrophover" href="/EmployeeEducation">
                 Employee Education
               </a>
             </li>
@@ -53,7 +53,7 @@ const Header = () => {
           <i className="bi bi-list mobile-nav-toggle"></i>
         </Nav>
 
-        <a href="/App" className="get-started-btn scrollto homebtn headerimgtoleft">
+        <a href="/App" className="get-started-btn scrollto homebtn">
           Home
         </a>
       </div>

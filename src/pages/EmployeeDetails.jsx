@@ -1,6 +1,5 @@
 import '../assets/style2.css'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import DynamicTable from '../components/DynamicTable'
 import InputFieldsEmpDet from '../components/InputFieldsEmpDet'
 
