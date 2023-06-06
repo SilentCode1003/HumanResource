@@ -27,11 +27,11 @@ function App() {
     <section id="about" className="about">
       <div className="container" data-aos="fade-up">
 
-        <div className="row">
+        <div className="row shadow">
           <div className="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
             <img src={about} className="img-fluid" alt=""/>
           </div>
-          <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content content1" data-aos="fade-right" data-aos-delay="100">
+          <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content content1 shadow" data-aos="fade-right" data-aos-delay="100">
             <h3 className='h3whiten'>Company Profile</h3>
             <p className='pwhiten'>
               5L Solutions and Allied Services Corp. is a company who provides technical equipment and services in the field of Information Technology
