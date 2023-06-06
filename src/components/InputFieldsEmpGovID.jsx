@@ -15,21 +15,21 @@ const InputFieldsEmpGovID = () => {
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <label className="form-label">SSS ID</label>
-                            <input id="sssid" name="sssid" type="text" className="form-control fieldcolor" placeholder="Enter your firstname"/>
+                            <input id="sssid" name="sssid" type="text" className="form-control fieldcolor" placeholder="Enter SSS ID"/>
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Pag-IBIG ID</label>
-                            <input id="pagibigid" name="pagibigid" type="text" className="form-control fieldcolor" placeholder="Enter your middlename"/>    
+                            <input id="pagibigid" name="pagibigid" type="text" className="form-control fieldcolor" placeholder="Enter Pag-IBIG ID"/>    
                         </div>
                     </div>
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <label className="form-label">Philhealth</label>
-                            <input id="philhealth" name="philhealth" type="tel" className="form-control fieldcolor" placeholder="Enter your contact number"/>
+                            <input id="philhealth" name="philhealth" type="tel" className="form-control fieldcolor" placeholder="Enter philhealth"/>
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">TIN ID</label>
-                            <input id="tinid" name="tinid"  className="form-control fieldcolor" placeholder="Enter your email add"/>
+                            <input id="tinid" name="tinid"  className="form-control fieldcolor" placeholder="Enter TIN ID"/>
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">

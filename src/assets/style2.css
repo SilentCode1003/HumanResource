@@ -87,7 +87,7 @@ td {
 .homebtn:hover{
   color: white !important;
   background-color: rgb(114,137,218) !important;
-  border-color: rgb(114,137,218) !important;
+  border-color: black !important;
 }
 
 .dropdownhover :hover{
