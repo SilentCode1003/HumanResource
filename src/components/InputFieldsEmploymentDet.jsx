@@ -15,13 +15,17 @@ const InputFieldsEmploymentDet = () => {
                     <div className="row mb-4">
                         <div className="col-md-4">
                             <label className="form-label">Department</label>
-                            <select className="entry-input form-control mb-2 fieldcolor" name="department" id="department">
+                            <select className="entry-input form-control fieldcolor" name="department" id="department">
                                 <option value="">- - - Select Department - - -</option>
+                                <option value="married">IT</option>
+                                <option value="divorced">HR</option>
+                                <option value="separated">MAINTENANCE</option>
+                                <option value="nvmarried">FIELD</option>
                             </select>
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Date of Hired</label>
-                            <input id="dateofhire" name="dateofhire" type="text" className="form-control fieldcolor" placeholder="Enter date of hired"/>
+                            <input type="date" id="dateofhire" name="dateofhire" className="entry-input form-control fieldcolor" />        
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Employment Status</label>
@@ -35,11 +39,11 @@ const InputFieldsEmploymentDet = () => {
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Probation Period</label>
-                            <input id="probationperiod" name="probationperiod"  className="form-control fieldcolor" placeholder="Enter probation period"/>
+                            <input type="date" id="probationperiod" name="probationperiod" className="entry-input form-control fieldcolor" />        
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Performance Review Schedule</label>
-                            <input id="performancereviewschedule" name="performancereviewschedule"  className="form-control fieldcolor" placeholder="Enter performance review schedule"/>
+                            <input type="date" id="performancereviewschedule" name="performancereviewschedule" className="entry-input form-control fieldcolor" />        
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">

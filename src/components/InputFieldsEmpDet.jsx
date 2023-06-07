@@ -1,5 +1,6 @@
 
 const InputFieldsEmpDet = () => {
+    
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
@@ -40,16 +41,62 @@ const InputFieldsEmpDet = () => {
                             <input id="gender" name="gender" type="" className="form-control fieldcolor" placeholder="Enter your gender"/>
                         </div>
                     </div>
-                    <div className="row mb-1">
-                        <div className="col-md-6">
-                            <select className="entry-input form-control mb-2 fieldcolor" name="dateofbirth" id="dateofbirth">
-                                <option value="">- - - Select Birthday - - -</option>
+                    <div className="row mb-2">
+                        <div className="col-md-4">
+                        <label className="form-label">Birthday</label>
+                            <input type="date" id="dateofbirth" name="dateofbirth" className="entry-input form-control fieldcolor" />        
+                        </div>
+                        <div className="col-md-4">
+                        <label className="form-label">Nationality</label>
+                            <select className="entry-input form-control mb-2 fieldcolor" name="nationality" id="nationality">
+                                <option value="">- - - Select Nationality - - -</option>
+                                <option value="fil">FILIPINO</option>
+                                <option value="cn">CHINESE</option>
+                                <option value="jp">JAPANESE</option>
+                                <option value="kr">KOREAN</option>
+                                <option value="indo">INDONESIAN</option>
+                                <option value="malay">MALAYSIAN</option>
+                                <option value="thai">THAI</option>
+                                <option value="tai">TAIWANESE</option>
                             </select>        
                         </div>
-                        <div className="col-md-6">
-                            <select className="entry-input form-control fieldcolor" name="address" id="address">
-                                <option value="">- - - Select Address - - -</option>
+                        <div className="col-md-4">
+                        <label className="form-label">Marital Status</label>
+                            <select className="entry-input form-control fieldcolor" name="maritalstatus" id="maritalstatus">
+                                <option value="">- - - Select Marital Status - - -</option>
+                                <option value="married">MARRIED</option>
+                                <option value="divorced">DIVORCED</option>
+                                <option value="separated">SEPARATED/WIDOWED</option>
+                                <option value="nvmarried">NEVER MARRIED</option>
                             </select>       
+                        </div>
+                    </div>
+                    <div className="row mb-1">
+                        <div className="col-md-12">
+                            <h3>Address</h3>
+                        </div>
+                    </div>
+                    <div className="row mb-4">
+                        <div className="col-md-3">
+                            <label className="form-label">City</label>
+                            <input id="city" name="city" type="tel" className="form-control fieldcolor" placeholder="Enter city"/>
+                        </div>
+                        <div className="col-md-3">
+                            <label className="form-label">ZIP or postal code</label>
+                            <input id="zip" name="zip" type="email" className="form-control fieldcolor" placeholder="Enter ZIP or postal code"/>
+                        </div>
+                        <div className="col-md-3">
+                            <label className="form-label">Barangay</label>
+                            <input id="brgy" name="brgy" type="" className="form-control fieldcolor" placeholder="Enter barangay"/>
+                        </div>
+                        <div className="col-md-3">
+                            <label className="form-label">Street address</label>
+                            <input id="street" name="street" type="" className="form-control fieldcolor" placeholder="Enter street address"/>
+                        </div>
+                    </div>
+                    <div className="row mb-1">
+                        <div className="col-md-12">
+                            <h3>Emergency Contact</h3>
                         </div>
                     </div>
                     <div className="row mb-4">
@@ -60,18 +107,6 @@ const InputFieldsEmpDet = () => {
                         <div className="col-md-6">
                             <label className="form-label">Emergency Contact Number</label>
                             <input id="emergencycontactnumber" name="emergencycontactnumber" className="form-control fieldcolor" placeholder="Enter emergency number"/>
-                        </div>
-                    </div>
-                    <div className="row mb-4">
-                        <div className="col-md-6">
-                            <select className="entry-input form-control mb-2 fieldcolor" name="nationality" id="nationality">
-                                <option value="">- - - Select Nationality - - -</option>
-                            </select>        
-                        </div>
-                        <div className="col-md-6">
-                            <select className="entry-input form-control fieldcolor" name="maritalstatus" id="maritalstatus">
-                                <option value="">- - - Select Marital Status - - -</option>
-                            </select>       
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">

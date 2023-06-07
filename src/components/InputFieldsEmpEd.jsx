@@ -29,7 +29,7 @@ const InputFieldsEmpEd = () => {
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Graduation Date</label>
-                            <input id="graduationdate" name="graduationdate"  className="form-control fieldcolor" placeholder="Enter graduation date"/>
+                            <input type="date" id="graduationdate" name="graduationdate" className="entry-input form-control fieldcolor" />        
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">

@@ -25,11 +25,11 @@ const InputFieldsEmpExp = () => {
                     <div className="row mb-4">
                         <div className="col-md-4">
                             <label className="form-label">Start Date</label>
-                            <input id="startdate" name="startdate" type="tel" className="form-control fieldcolor" placeholder="Enter start date"/>
+                            <input type="date" id="startdate" name="startdate" className="entry-input form-control fieldcolor" />        
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">End Date</label>
-                            <input id="enddate" name="enddate"  className="form-control fieldcolor" placeholder="Enter end date"/>
+                            <input type="date" id="enddate" name="enddate" className="entry-input form-control fieldcolor" />        
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Job Description</label>
