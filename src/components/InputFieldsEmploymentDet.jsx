@@ -47,7 +47,7 @@ const InputFieldsEmploymentDet = () => {
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <button id="addBtn" name="addBtn" className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 homebtn">
+                        <button id="addBtn" name="addBtn" className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn">
                             <i className="fa fa-plus" aria-hidden="true"></i>
                             Add
                         </button> 
