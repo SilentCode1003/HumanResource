@@ -1,16 +1,48 @@
 /*edits*/
-.cardtitle{
-  margin-left: 20px !important;
+
+.card-header{
+  width: 100%;
+  height: 65px !important;
+  border: none !important;
+  text-align: center !important; 
+}
+
+.cardcolor1{
+  background-color: #a2aab0 !important;
+}
+
+.cardcolor2{
+  background-color: #cbc5c1 !important;
+}
+
+.cardcolor3{
+  background-color: #738290 !important;
+}
+
+.cardcolor4{
+  background-color: #eae1df !important;
+}
+
+.cardcolor5{
+  background-color: #a2aab0 !important;
+}
+
+.headernavmargin{
+  margin-right: 20px !important;
+}
+
+
+.landingcardcontent{
+  background-color: white !important;
+  border: none !important;
+  height: 255px !important;
+  width: 100% !important;
+  
 }
 
 .scrollable{
   max-height: 255px !important;
   overflow-x: auto !important;
-}
-
-.headerimgtoleft{
-  margin-left: 15px !important;
-  height: 50px !important;
 }
 
 .headercenter{
@@ -24,6 +56,7 @@
 .img-fluid2{
   width: 100px !important;
   height: 50px !important;
+  
 }
 
 .h3whiten, .pwhiten{
@@ -61,14 +94,8 @@
   margin-right: 75px;
 }
 
-
-.landingpagemargin{
-  margin-left: 20px;  
-}
-
 .landingcardpadding{
-  padding: 0 !important;
-  
+  padding: 15 !important;
 }
 
 .barcenter{

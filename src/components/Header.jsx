@@ -12,34 +12,34 @@ const Header = () => {
           <ul>
             <li>
               <a
-                className="navbardrophover d-flex justify-content-center"
+                className="navbardrophover d-flex justify-content-center headernavmargin"
                 href="/EmployeeDetails"
               >
                 Employee Details
               </a>
             </li>
             <li>
-              <a className="navbardrophover" href="/EmployeeGovernmentID">
+              <a className="navbardrophover d-flex justify-content-center headernavmargin" href="/EmployeeGovernmentID">
                 Employee Government ID
               </a>
             </li>
             <li>
-              <a className="navbardrophover" href="/EmployementDetails">
+              <a className="navbardrophover d-flex justify-content-center headernavmargin" href="/EmployementDetails">
                 Employment Details
               </a>
             </li>
             <li>
-              <a className="navbardrophover" href="/EmployeeEducation">
+              <a className="navbardrophover d-flex justify-content-center headernavmargin" href="/EmployeeEducation">
                 Employee Education
               </a>
             </li>
             <li>
-              <a className="navbardrophover" href="/EmployeeWorkExperience">
+              <a className="navbardrophover d-flex justify-content-center headernavmargin" href="/EmployeeWorkExperience">
                 Employee Work Experience
               </a>
             </li>
             <li>
-              <a className="navbardrophover" href="/EmployeeReference">
+              <a className="navbardrophover d-flex justify-content-center headernavmargin" href="/EmployeeReference">
                 Employee Reference
               </a>
             </li>
