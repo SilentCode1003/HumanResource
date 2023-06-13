@@ -1,4 +1,7 @@
 /*edits*/
+.navheight{
+  height: 100px !important;
+}
 
 .card-header{
   width: 100%;
@@ -79,7 +82,7 @@
 }
 
 .navbardrophover{
-  font-size: 13px !important;
+  
   color: black !important;
 }
 
@@ -89,7 +92,7 @@
 }
 
 .inpufieldmargin{
-  margin-top: 100px;
+  margin-top: 125px;
   margin-left: 75px;
   margin-right: 75px;
 }

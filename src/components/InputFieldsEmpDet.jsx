@@ -1,16 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {validateNumberInput} from '../inputfield_validation/validator';
+import {validatorempdet} from '../inputfield_validation/validator';
 
 const InputFieldsEmpDet = () => {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
-  const [result, setResult] = useState("");
+  const [result, address] = useState("");
+  const [firstname, setfirstname] = useState("");
+  const [middlename, setmiddlename] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [gender, setgender] = useState("");
+  const [contactnumber, setcontactnumber] = useState("");
+  const [email, setemail] = useState("");
+  const [emergencycontactname, setemergencycontactname] = useState("");
+  const [emergencycontactnumber, setemergencycontactnumber] = useState("");
 
   const handleConcatenate = () => {
     const concatenatedValue =
       input1 + ", " + input2 + ", " + input3 + ", " + input4;
-    setResult(concatenatedValue);
+    address(concatenatedValue);
+  };
+
+  useEffect(() => {
+    validateNumberInput();
+  }, []);
+
+  const validatorOnClick = () => {
+    validatorempdet(
+      firstname,
+      middlename,
+      lastname,
+      gender,
+      contactnumber,
+      email,
+      emergencycontactname,
+      emergencycontactnumber
+    );
   };
 
   return (
@@ -26,7 +53,7 @@ const InputFieldsEmpDet = () => {
                   id="employeeid"
                   name="employeeid"
                   type="text"
-                  className="form-control fieldcolor"
+                  className="form-control fieldcolor number-validator"
                   placeholder=""
                 />
               </div>
@@ -40,6 +67,8 @@ const InputFieldsEmpDet = () => {
                   type="text"
                   className="form-control fieldcolor"
                   placeholder="Enter your firstname"
+                  onChange={(e) => setfirstname(e.target.value)}
+                  value={firstname}
                 />
               </div>
               <div className="col-md-4">
@@ -50,6 +79,8 @@ const InputFieldsEmpDet = () => {
                   type="text"
                   className="form-control fieldcolor"
                   placeholder="Enter your middlename"
+                  onChange={(e) => setmiddlename(e.target.value)}
+                  value={middlename}
                 />
               </div>
               <div className="col-md-4">
@@ -60,6 +91,8 @@ const InputFieldsEmpDet = () => {
                   type="text"
                   className="form-control fieldcolor"
                   placeholder="Enter your lastname"
+                  onChange={(e) => setlastname(e.target.value)}
+                  value={lastname}
                 />
               </div>
             </div>
@@ -70,8 +103,10 @@ const InputFieldsEmpDet = () => {
                   id="contactnumber"
                   name="contactnumber"
                   type="tel"
-                  className="form-control fieldcolor"
+                  className="form-control fieldcolor number-validator"
                   placeholder="Enter your contact number"
+                  onChange={(e) => setcontactnumber(e.target.value)}
+                  value={contactnumber}
                 />
               </div>
               <div className="col-md-4">
@@ -82,6 +117,8 @@ const InputFieldsEmpDet = () => {
                   type="email"
                   className="form-control fieldcolor"
                   placeholder="Enter your email add"
+                  onChange={(e) => setemail(e.target.value)}
+                  value={email}
                 />
               </div>
               <div className="col-md-4">
@@ -92,6 +129,8 @@ const InputFieldsEmpDet = () => {
                   type=""
                   className="form-control fieldcolor"
                   placeholder="Enter your gender"
+                  onChange={(e) => setgender(e.target.value)}
+                  value={gender}
                 />
               </div>
             </div>
@@ -164,7 +203,7 @@ const InputFieldsEmpDet = () => {
                   type="email"
                   value={input2}
                   onChange={(e) => setInput2(e.target.value)}
-                  className="form-control fieldcolor"
+                  className="form-control fieldcolor number-validator"
                   placeholder="Enter ZIP or postal code"
                 />
               </div>
@@ -225,6 +264,8 @@ const InputFieldsEmpDet = () => {
                   type="tel"
                   className="form-control fieldcolor"
                   placeholder="Enter emergency name"
+                  onChange={(e) => setemergencycontactname(e.target.value)}
+                  value={emergencycontactname}
                 />
               </div>
               <div className="col-md-6 mb-4">
@@ -232,8 +273,10 @@ const InputFieldsEmpDet = () => {
                 <input
                   id="emergencycontactnumber"
                   name="emergencycontactnumber"
-                  className="form-control fieldcolor"
+                  className="form-control fieldcolor number-validator"
                   placeholder="Enter emergency number"
+                  onChange={(e) => setemergencycontactnumber(e.target.value)}
+                  value={emergencycontactnumber}
                 />
               </div>
             </div>
@@ -241,8 +284,7 @@ const InputFieldsEmpDet = () => {
               <button
                 id="addBtn"
                 name="addBtn"
-                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn"
-              >
+                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn" onClick={validatorOnClick} variant="outline-danger">
                 Add
               </button>
             </div>

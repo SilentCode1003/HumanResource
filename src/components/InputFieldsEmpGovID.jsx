@@ -1,5 +1,31 @@
+import {validatorgovid} from '../inputfield_validation/validator';
+import {validateNumberInput} from '../inputfield_validation/validator';
+import React, { useState, useEffect } from "react";
+
+
 
 const InputFieldsEmpGovID = () => {
+
+    const [sssid, setInput1] = useState("");
+    const [pagibigid, setInput2] = useState("");
+    const [philhealth, setInput3] = useState("");
+    const [tinid, setInput4] = useState("");
+    
+
+    const validatorOnClick = () => {
+        validatorgovid(
+            sssid,
+            pagibigid,
+            philhealth,
+            tinid,
+        );
+      };
+
+      useEffect(() => {
+        validateNumberInput();
+      }, []);
+
+      
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
@@ -15,25 +41,25 @@ const InputFieldsEmpGovID = () => {
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <label className="form-label">SSS ID</label>
-                            <input id="sssid" name="sssid" type="text" className="form-control fieldcolor" placeholder="Enter SSS ID"/>
+                            <input onChange={(e) => setInput1(e.target.value)} value={sssid} id="sssid" name="sssid" type="text" className="form-control fieldcolor number-validator" placeholder="Enter SSS ID"/>
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Pag-IBIG ID</label>
-                            <input id="pagibigid" name="pagibigid" type="text" className="form-control fieldcolor" placeholder="Enter Pag-IBIG ID"/>    
+                            <input onChange={(e) => setInput2(e.target.value)} value={pagibigid} id="pagibigid" name="pagibigid" type="text" className="form-control fieldcolor number-validator" placeholder="Enter Pag-IBIG ID"/>    
                         </div>
                     </div>
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <label className="form-label">Philhealth</label>
-                            <input id="philhealth" name="philhealth" type="tel" className="form-control fieldcolor" placeholder="Enter philhealth"/>
+                            <input onChange={(e) => setInput3(e.target.value)} value={philhealth} id="philhealth" name="philhealth" type="tel" className="form-control fieldcolor number-validator" placeholder="Enter philhealth"/>
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">TIN ID</label>
-                            <input id="tinid" name="tinid"  className="form-control fieldcolor" placeholder="Enter TIN ID"/>
+                            <input onChange={(e) => setInput4(e.target.value)} value={tinid} id="tinid" name="tinid"  className="form-control fieldcolor number-validator" placeholder="Enter TIN ID"/>
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <button id="addBtn" name="addBtn" className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn">
+                        <button id="addBtn" name="addBtn" className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn" onClick={validatorOnClick} variant="outline-danger">
                             <i className="fa fa-plus" aria-hidden="true"></i>
                             Add
                         </button> 
