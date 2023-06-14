@@ -40,6 +40,17 @@ export const validatorgovid = (sssid, pagibigid, philhealth, tinid) => {
   }
 };
 
+export const validatoremplodet = (salary, employmentstatus) => {
+  if (salary === "" || employmentstatus === "") {
+    Swal.fire({
+      title: "Invalid Input",
+      text: "Please select values for all input fields.",
+      icon: "error",
+    });
+    return;
+  }
+};
+
 export const validateNumberInput = () => {
   const numberInputs = document.querySelectorAll(".number-validator");
 

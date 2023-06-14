@@ -1,5 +1,23 @@
+import {validatoremplodet} from '../inputfield_validation/validator';
+import {validateNumberInput} from '../inputfield_validation/validator';
+import React, { useState, useEffect } from "react";
 
 const InputFieldsEmploymentDet = () => {
+
+    const [salary, setInput1] = useState("");
+    const [employmentstatus, setInput2] = useState("");
+
+    const validatorOnClick = () => {
+        validatoremplodet(
+            salary,
+            employmentstatus,
+        );
+      };
+
+      useEffect(() => {
+        validateNumberInput();
+      }, []);
+
     return (
         <div className="row mb-2 ">
         <div className="col-lg-12 ">
@@ -29,13 +47,13 @@ const InputFieldsEmploymentDet = () => {
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Employment Status</label>
-                            <input id="employmentstatus" name="employmentstatus" type="text" className="form-control fieldcolor" placeholder="Enter employment status"/>    
+                            <input onChange={(e) => setInput2(e.target.value)} value={employmentstatus} id="employmentstatus" name="employmentstatus" type="text" className="form-control fieldcolor" placeholder="Enter employment status"/>    
                         </div>
                     </div>
                     <div className="row mb-4">
                         <div className="col-md-4">
                             <label className="form-label">Salary</label>
-                            <input id="salary" name="salary" type="tel" className="form-control fieldcolor" placeholder="Enter Salary"/>
+                            <input onChange={(e) => setInput1(e.target.value)} value={salary} id="salary" name="salary" type="tel" className="form-control fieldcolor number-validator" placeholder="Enter Salary"/>
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Probation Period</label>
@@ -47,7 +65,7 @@ const InputFieldsEmploymentDet = () => {
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <button id="addBtn" name="addBtn" className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn">
+                        <button id="addBtn" name="addBtn" className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn" onClick={validatorOnClick}>
                             <i className="fa fa-plus" aria-hidden="true"></i>
                             Add
                         </button> 

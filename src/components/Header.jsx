@@ -3,7 +3,7 @@ import logo from "../assets/img/HRMIS3.svg";
 
 const Header = () => {
   return (
-    <header id="header" className="fixed-top navcolor navheight d-flex align-items-center">
+    <header id="header" className="fixed-top navcolor  d-flex align-items-center">
       <Navbar collapseOnSelect expand="lg" >
         <Navbar.Brand href="/App">
           <img src={logo} className="img-fluid2" alt="Responsive image" />
