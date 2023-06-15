@@ -51,6 +51,39 @@ export const validatoremplodet = (salary, employmentstatus) => {
   }
 };
 
+export const validatoremped = (degree, fieldofstudy, institution) => {
+  if (degree === "" || fieldofstudy === "" || institution === "") {
+    Swal.fire({
+      title: "Invalid Input",
+      text: "Please select values for all input fields.",
+      icon: "error",
+    });
+    return;
+  }
+};
+
+export const validatorempexp = (company, jobtitle, jobdescription) => {
+  if (company === "" || jobtitle === "" || jobdescription === "") {
+    Swal.fire({
+      title: "Invalid Input",
+      text: "Please select values for all input fields.",
+      icon: "error",
+    });
+    return;
+  }
+};
+
+export const validatorempref = (referencename, relationship, contactinfo) => {
+  if (referencename === "" || relationship === "" || contactinfo === "") {
+    Swal.fire({
+      title: "Invalid Input",
+      text: "Please select values for all input fields.",
+      icon: "error",
+    });
+    return;
+  }
+};
+
 export const validateNumberInput = () => {
   const numberInputs = document.querySelectorAll(".number-validator");
 
