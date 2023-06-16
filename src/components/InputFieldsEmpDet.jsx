@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {validateNumberInput} from '../inputfield_validation/validator';
-import {validatorempdet} from '../inputfield_validation/validator';
+import { validateNumberInput } from "../inputfield_validation/validator";
+import { validatorempdet } from "../inputfield_validation/validator";
 
 const InputFieldsEmpDet = () => {
   const [input1, setInput1] = useState("");
@@ -8,6 +8,7 @@ const InputFieldsEmpDet = () => {
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
   const [result, address] = useState("");
+  const [employeeid, setemployeeid] = useState("");
   const [firstname, setfirstname] = useState("");
   const [middlename, setmiddlename] = useState("");
   const [lastname, setlastname] = useState("");
@@ -16,12 +17,15 @@ const InputFieldsEmpDet = () => {
   const [email, setemail] = useState("");
   const [emergencycontactname, setemergencycontactname] = useState("");
   const [emergencycontactnumber, setemergencycontactnumber] = useState("");
+  const [dateofbirth, setdateofbirth] = useState("");
+  const [nationality, setnationality] = useState("");
+  const [maritalstatus, setmaritalstatus] = useState("");
 
-  const handleConcatenate = () => {
+  useEffect(() => {
     const concatenatedValue =
       input1 + ", " + input2 + ", " + input3 + ", " + input4;
     address(concatenatedValue);
-  };
+  });
 
   useEffect(() => {
     validateNumberInput();
@@ -29,6 +33,7 @@ const InputFieldsEmpDet = () => {
 
   const validatorOnClick = () => {
     validatorempdet(
+      employeeid,
       firstname,
       middlename,
       lastname,
@@ -36,7 +41,14 @@ const InputFieldsEmpDet = () => {
       contactnumber,
       email,
       emergencycontactname,
-      emergencycontactnumber
+      emergencycontactnumber,
+      dateofbirth,
+      nationality,
+      maritalstatus,
+      input1,
+      input2,
+      input3,
+      input4
     );
   };
 
@@ -49,13 +61,19 @@ const InputFieldsEmpDet = () => {
               <div className="col-md-12 mb-2">
                 <h2 className="mb-4">Employee Details</h2>
                 <label className="form-label">Employee ID</label>
-                <input
-                  id="employeeid"
+                <select
+                  className="entry-input form-control fieldcolor"
                   name="employeeid"
-                  type="text"
-                  className="form-control fieldcolor number-validator"
-                  placeholder=""
-                />
+                  id="employeeid"
+                  onChange={(e) => setemployeeid(e.target.value)}
+                  value={employeeid}
+                >
+                  <option value="">- - - Select Employee ID - - -</option>
+                  <option value="123456789">123456789</option>
+                  <option value="789456123">789456123</option>
+                  <option value="741852963">741852963</option>
+                  <option value="963852741">963852741</option>
+                </select>
               </div>
             </div>
             <div className="row mb-4">
@@ -142,6 +160,8 @@ const InputFieldsEmpDet = () => {
                   id="dateofbirth"
                   name="dateofbirth"
                   className="entry-input form-control fieldcolor"
+                  onChange={(e) => setdateofbirth(e.target.value)}
+                  value={dateofbirth}
                 />
               </div>
               <div className="col-md-4">
@@ -150,6 +170,8 @@ const InputFieldsEmpDet = () => {
                   className="entry-input form-control mb-2 fieldcolor"
                   name="nationality"
                   id="nationality"
+                  onChange={(e) => setnationality(e.target.value)}
+                  value={nationality}
                 >
                   <option value="">- - - Select Nationality - - -</option>
                   <option value="fil">FILIPINO</option>
@@ -168,6 +190,8 @@ const InputFieldsEmpDet = () => {
                   className="entry-input form-control fieldcolor"
                   name="maritalstatus"
                   id="maritalstatus"
+                  onChange={(e) => setmaritalstatus(e.target.value)}
+                  value={maritalstatus}
                 >
                   <option value="">- - - Select Marital Status - - -</option>
                   <option value="married">MARRIED</option>
@@ -233,21 +257,11 @@ const InputFieldsEmpDet = () => {
               </div>
             </div>
             <div className="row">
-            <div className="col-sm-6 mt-4 mb-4">
-              <button
-                id="addBtn"
-                name="addBtn"
-                onClick={handleConcatenate}
-                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn"
-              >
-                Generate Address
-              </button>
-            </div>
-            <div className="col-sm-6 mt-4 mb-4">
+              <div className="col-sm-12 mt-4 mb-4">
                 <div className="card">
-                    <p>Result: {result}</p>
+                  <p>Result: {result}</p>
                 </div>
-            </div>
+              </div>
             </div>
 
             <div className="row mb-">
@@ -284,7 +298,10 @@ const InputFieldsEmpDet = () => {
               <button
                 id="addBtn"
                 name="addBtn"
-                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn" onClick={validatorOnClick} variant="outline-danger">
+                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn"
+                onClick={validatorOnClick}
+                variant="outline-danger"
+              >
                 Add
               </button>
             </div>
@@ -293,6 +310,6 @@ const InputFieldsEmpDet = () => {
       </div>
     </div>
   );
-}
+};
 
 export default InputFieldsEmpDet;

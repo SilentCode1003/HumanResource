@@ -11,12 +11,12 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link className="navbardrophover" href="/EmployeeDetails">Employee Details</Nav.Link>
-            <Nav.Link className="navbardrophover" href="/EmployeeGovernmentID">Employee Government ID</Nav.Link>
-            <Nav.Link className="navbardrophover" href="/EmployementDetails">Employment Details</Nav.Link>
-            <Nav.Link className="navbardrophover" href="/EmployeeEducation">Employee Education</Nav.Link>
-            <Nav.Link className="navbardrophover" href="/EmployeeWorkExperience">Employee Work Experience</Nav.Link>
-            <Nav.Link className="navbardrophover"href="/EmployeeReference">Employee Reference</Nav.Link>
+            <Nav.Link className="navbardrophover headernavmargin" href="/EmployeeDetails">Employee Details</Nav.Link>
+            <Nav.Link className="navbardrophover headernavmargin" href="/EmployeeGovernmentID">Employee Government ID</Nav.Link>
+            <Nav.Link className="navbardrophover headernavmargin" href="/EmployementDetails">Employment Details</Nav.Link>
+            <Nav.Link className="navbardrophover headernavmargin" href="/EmployeeEducation">Employee Education</Nav.Link>
+            <Nav.Link className="navbardrophover headernavmargin" href="/EmployeeWorkExperience">Employee Work Experience</Nav.Link>
+            <Nav.Link className="navbardrophover headernavmargin"href="/EmployeeReference">Employee Reference</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

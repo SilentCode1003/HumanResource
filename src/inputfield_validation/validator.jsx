@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 
 export const validatorempdet = (
+  employeeid,
   firstname,
   middlename,
   lastname,
@@ -8,9 +9,17 @@ export const validatorempdet = (
   contactnumber,
   email,
   emergencycontactname,
-  emergencycontactnumber
+  emergencycontactnumber,
+  dateofbirth,
+  nationality,
+  maritalstatus,
+  input1,
+  input2,
+  input3,
+  input4
 ) => {
   if (
+    employeeid === "" ||
     firstname === "" ||
     middlename === "" ||
     lastname === "" ||
@@ -18,7 +27,14 @@ export const validatorempdet = (
     contactnumber === "" ||
     email === "" ||
     emergencycontactname === "" ||
-    emergencycontactnumber === ""
+    emergencycontactnumber === "" ||
+    dateofbirth === "" ||
+    nationality === "" ||
+    maritalstatus === "" ||
+    input1 === "" ||
+    input2 === "" ||
+    input3 === "" ||
+    input4 === ""
   ) {
     Swal.fire({
       title: "Invalid Input",
@@ -26,59 +42,161 @@ export const validatorempdet = (
       icon: "error",
     });
     return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
+    });
+    return;
   }
 };
 
-export const validatorgovid = (sssid, pagibigid, philhealth, tinid) => {
-  if (sssid === "" || pagibigid === "" || philhealth === "" || tinid === "") {
+export const validatorgovid = (
+  employeeid,
+  sssid,
+  pagibigid,
+  philhealth,
+  tinid
+) => {
+  if (
+    employeeid === "" ||
+    sssid === "" ||
+    pagibigid === "" ||
+    philhealth === "" ||
+    tinid === ""
+  ) {
     Swal.fire({
       title: "Invalid Input",
       text: "Please select values for all input fields.",
       icon: "error",
     });
     return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
+    });
+    return;
   }
 };
 
-export const validatoremplodet = (salary, employmentstatus) => {
-  if (salary === "" || employmentstatus === "") {
+export const validatoremplodet = (
+  performancereviewschedule,
+  probationperiod,
+  dateofhire,
+  department,
+  employeeid,
+  salary,
+  employmentstatus
+) => {
+  if (
+    performancereviewschedule === "" ||
+    probationperiod === "" ||
+    dateofhire === "" ||
+    department === "" ||
+    employeeid === "" ||
+    salary === "" ||
+    employmentstatus === ""
+  ) {
     Swal.fire({
       title: "Invalid Input",
       text: "Please select values for all input fields.",
       icon: "error",
     });
     return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
+    });
+    return;
   }
 };
 
-export const validatoremped = (degree, fieldofstudy, institution) => {
-  if (degree === "" || fieldofstudy === "" || institution === "") {
+export const validatoremped = (
+  employeeid,
+  degree,
+  fieldofstudy,
+  institution,
+  graduationdate
+) => {
+  if (
+    employeeid === "" ||
+    degree === "" ||
+    fieldofstudy === "" ||
+    institution === "" ||
+    graduationdate === ""
+  ) {
     Swal.fire({
       title: "Invalid Input",
       text: "Please select values for all input fields.",
       icon: "error",
     });
     return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
+    });
+    return;
   }
 };
 
-export const validatorempexp = (company, jobtitle, jobdescription) => {
-  if (company === "" || jobtitle === "" || jobdescription === "") {
+export const validatorempexp = (
+  employeeid,
+  company,
+  jobtitle,
+  jobdescription
+) => {
+  if (
+    employeeid === "" ||
+    company === "" ||
+    jobtitle === "" ||
+    jobdescription === ""
+  ) {
     Swal.fire({
       title: "Invalid Input",
       text: "Please select values for all input fields.",
       icon: "error",
     });
     return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
+    });
+    return;
   }
 };
 
-export const validatorempref = (referencename, relationship, contactinfo) => {
-  if (referencename === "" || relationship === "" || contactinfo === "") {
+export const validatorempref = (
+  employeeid,
+  referencename,
+  relationship,
+  contactinfo
+) => {
+  if (
+    employeeid === "" ||
+    referencename === "" ||
+    relationship === "" ||
+    contactinfo === ""
+  ) {
     Swal.fire({
       title: "Invalid Input",
       text: "Please select values for all input fields.",
       icon: "error",
+    });
+    return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
     });
     return;
   }
