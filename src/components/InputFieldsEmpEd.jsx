@@ -9,7 +9,13 @@ const InputFieldsEmpEd = () => {
   const [graduationdate, setgraduationdate] = useState("");
 
   const validatorOnClick = () => {
-    validatoremped(graduationdate, employeeid, degree, fieldofstudy, institution);
+    validatoremped(
+      graduationdate,
+      employeeid,
+      degree,
+      fieldofstudy,
+      institution
+    );
   };
 
   return (

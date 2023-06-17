@@ -150,13 +150,17 @@ export const validatorempexp = (
   employeeid,
   company,
   jobtitle,
-  jobdescription
+  jobdescription,
+  startdate,
+  enddate
 ) => {
   if (
     employeeid === "" ||
     company === "" ||
     jobtitle === "" ||
-    jobdescription === ""
+    jobdescription === "" ||
+    startdate === "" ||
+    enddate === ""
   ) {
     Swal.fire({
       title: "Invalid Input",
