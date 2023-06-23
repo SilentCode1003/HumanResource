@@ -257,8 +257,8 @@ const InputFieldsEmpDet = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col-sm-12 mt-4 mb-4">
-                <div className="card">
+              <div className="col-sm-6 mt-4 mb-4">
+                <div className="card fieldcolor">
                   <p>Result: {result}</p>
                 </div>
               </div>

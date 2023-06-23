@@ -1,5 +1,27 @@
 import Swal from "sweetalert2";
 
+export const validatorlogin = (
+  username, password
+) => {
+  if (
+    username === "" || password === ""
+  ) {
+    Swal.fire({
+      title: "Invalid Input",
+      text: "Please select values for all input fields.",
+      icon: "error",
+    });
+    return;
+  } else {
+    Swal.fire({
+      title: "SUCCESSFUL!",
+      text: "ENTRY COMPLETE!",
+      icon: "success",
+    });
+    return;
+  }
+};
+
 export const validatorempdet = (
   employeeid,
   firstname,

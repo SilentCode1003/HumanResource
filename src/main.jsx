@@ -8,6 +8,7 @@ import EmployementDetails from './pages/EmployementDetails.jsx';
 import EmployeeEducation from './pages/EmployeeEducation.jsx';
 import EmployeeWorkExperience from './pages/EmployeeWorkExperience.jsx';
 import EmployeeReference from './pages/EmployeeReference.jsx';
+import Login from './pages/Login.jsx';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route index element={<App />} />
+      <Route path="/Login" element={<Login />} />
       <Route path="/App" element={<App />} />
       <Route path="/EmployeeDetails" element={<EmployeeDetails />} />
       <Route path="/EmployeeGovernmentID" element={<EmployeeGovernmentID />} />
