@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import { usePostEmployeeDetails } from "../API/submit/postEmpDet";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import { validatorempdet } from "../inputfield_validation/validator";
 
@@ -7,8 +9,7 @@ const InputFieldsEmpDet = () => {
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
-  const [result, address] = useState("");
-  const [employeeid, setemployeeid] = useState("");
+  const [address, result] = useState("");
   const [firstname, setfirstname] = useState("");
   const [middlename, setmiddlename] = useState("");
   const [lastname, setlastname] = useState("");
@@ -20,20 +21,20 @@ const InputFieldsEmpDet = () => {
   const [dateofbirth, setdateofbirth] = useState("");
   const [nationality, setnationality] = useState("");
   const [maritalstatus, setmaritalstatus] = useState("");
+  const postEmpDet = usePostEmployeeDetails();
 
   useEffect(() => {
     const concatenatedValue =
       input1 + ", " + input2 + ", " + input3 + ", " + input4;
-    address(concatenatedValue);
+    result(concatenatedValue);
   });
 
   useEffect(() => {
     validateNumberInput();
   }, []);
 
-  const validatorOnClick = () => {
+  const validatorOnClick = async () => {
     validatorempdet(
-      employeeid,
       firstname,
       middlename,
       lastname,
@@ -50,6 +51,39 @@ const InputFieldsEmpDet = () => {
       input3,
       input4
     );
+
+    const EmployeeDetails = {
+      firstname: firstname,
+      middlename: middlename,
+      lastname: lastname,
+      gender: gender,
+      dateofbirth: dateofbirth,
+      address: address,
+      contactnumber: contactnumber,
+      email: email,
+      nationality: nationality,
+      maritalstatus: maritalstatus,
+      emergencycontactname: emergencycontactname,
+      emergencycontactnumber: emergencycontactnumber,
+    };
+    console.log (EmployeeDetails) 
+    try{
+      //await postEmpDet.mutateAsync(EmployeeDetails);
+      Swal.fire({
+        title: "SUCCESSFUL!",
+        text: "ENTRY COMPLETE!",
+        icon: "success",
+      });
+      return;
+    }
+    catch(error){
+      Swal.fire({
+        title: "Invalid Input",
+        text: "Please select values for all input fields.",
+        icon: "error",
+      });
+      return;
+    }
   };
 
   return (
@@ -60,20 +94,6 @@ const InputFieldsEmpDet = () => {
             <div className="row">
               <div className="col-md-12 mb-2">
                 <h2 className="mb-4">Employee Details</h2>
-                <label className="form-label">Employee ID</label>
-                <select
-                  className="entry-input form-control fieldcolor"
-                  name="employeeid"
-                  id="employeeid"
-                  onChange={(e) => setemployeeid(e.target.value)}
-                  value={employeeid}
-                >
-                  <option value="">- - - Select Employee ID - - -</option>
-                  <option value="123456789">123456789</option>
-                  <option value="789456123">789456123</option>
-                  <option value="741852963">741852963</option>
-                  <option value="963852741">963852741</option>
-                </select>
               </div>
             </div>
             <div className="row mb-4">
@@ -259,7 +279,7 @@ const InputFieldsEmpDet = () => {
             <div className="row">
               <div className="col-sm-6 mt-4 mb-4">
                 <div className="card fieldcolor">
-                  <p>Result: {result}</p>
+                  <p>Result: {address}</p>
                 </div>
               </div>
             </div>
@@ -298,7 +318,7 @@ const InputFieldsEmpDet = () => {
               <button
                 id="addBtn"
                 name="addBtn"
-                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn"
+                className="d-none d-sm-inline-block btn btn-sm  shadow-sm w-50 inputbtn"
                 onClick={validatorOnClick}
                 variant="outline-danger"
               >

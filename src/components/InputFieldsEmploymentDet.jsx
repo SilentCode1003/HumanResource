@@ -138,7 +138,7 @@ const InputFieldsEmploymentDet = () => {
               <button
                 id="addBtn"
                 name="addBtn"
-                className="d-none d-sm-inline-block btn btn-sm btn-outline-primary shadow-sm w-50 inputbtn"
+                className="d-none d-sm-inline-block btn btn-sm shadow-sm w-50 inputbtn"
                 onClick={validatorOnClick}
               >
                 <i className="fa fa-plus" aria-hidden="true"></i>
