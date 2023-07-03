@@ -5,10 +5,10 @@ import { validateNumberInput } from "../inputfield_validation/validator";
 import { validatorempdet } from "../inputfield_validation/validator";
 
 const InputFieldsEmpDet = () => {
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
-  const [input3, setInput3] = useState("");
-  const [input4, setInput4] = useState("");
+  const [city, setInput1] = useState("");
+  const [zip, setInput2] = useState("");
+  const [barangay, setInput3] = useState("");
+  const [street, setInput4] = useState("");
   const [address, result] = useState("");
   const [firstname, setfirstname] = useState("");
   const [middlename, setmiddlename] = useState("");
@@ -25,7 +25,7 @@ const InputFieldsEmpDet = () => {
 
   useEffect(() => {
     const concatenatedValue =
-      input1 + ", " + input2 + ", " + input3 + ", " + input4;
+    city + ", " + zip + ", " + barangay + ", " + street;
     result(concatenatedValue);
   });
 
@@ -46,10 +46,10 @@ const InputFieldsEmpDet = () => {
       dateofbirth,
       nationality,
       maritalstatus,
-      input1,
-      input2,
-      input3,
-      input4
+      city,
+      zip,
+      barangay,
+      street
     );
 
     const EmployeeDetails = {
@@ -67,23 +67,37 @@ const InputFieldsEmpDet = () => {
       emergencycontactnumber: emergencycontactnumber,
     };
     console.log (EmployeeDetails) 
+    
     try{
-      //await postEmpDet.mutateAsync(EmployeeDetails);
-      Swal.fire({
-        title: "SUCCESSFUL!",
-        text: "ENTRY COMPLETE!",
-        icon: "success",
-      });
-      return;
+
+      const response = await postEmpDet.mutateAsync(EmployeeDetails);
+
+      if (response.msg === 'success') {
+        console.log(response.msg);
+        Swal.fire({
+          title: 'Success',
+          text: 'Login successful',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        })
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Login failed',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
     }
-    catch(error){
+    catch{
       Swal.fire({
         title: "Invalid Input",
-        text: "Please select values for all input fields.",
+        text: "E R R O R.",
         icon: "error",
       });
-      return;
     }
+
+    console.log (postEmpDet)
   };
 
   return (
@@ -233,7 +247,7 @@ const InputFieldsEmpDet = () => {
                   id="city"
                   name="city"
                   type="tel"
-                  value={input1}
+                  value={city}
                   onChange={(e) => setInput1(e.target.value)}
                   className="form-control fieldcolor"
                   placeholder="Enter city"
@@ -245,7 +259,7 @@ const InputFieldsEmpDet = () => {
                   id="zip"
                   name="zip"
                   type="email"
-                  value={input2}
+                  value={zip}
                   onChange={(e) => setInput2(e.target.value)}
                   className="form-control fieldcolor number-validator"
                   placeholder="Enter ZIP or postal code"
@@ -257,7 +271,7 @@ const InputFieldsEmpDet = () => {
                   id="brgy"
                   name="brgy"
                   type=""
-                  value={input3}
+                  value={barangay}
                   onChange={(e) => setInput3(e.target.value)}
                   className="form-control fieldcolor"
                   placeholder="Enter barangay"
@@ -269,7 +283,7 @@ const InputFieldsEmpDet = () => {
                   id="street"
                   name="street"
                   type=""
-                  value={input4}
+                  value={street}
                   onChange={(e) => setInput4(e.target.value)}
                   className="form-control fieldcolor"
                   placeholder="Enter street address"

@@ -1,5 +1,7 @@
 import { validatoremped } from "../inputfield_validation/validator";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { usePostEmployeeEducation } from "../API/submit/postEmpEd";
 
 const InputFieldsEmpEd = () => {
   const [employeeid, setemployeeid] = useState("");
@@ -7,6 +9,7 @@ const InputFieldsEmpEd = () => {
   const [fieldofstudy, setfieldofstudy] = useState("");
   const [institution, setinstitution] = useState("");
   const [graduationdate, setgraduationdate] = useState("");
+  const postEmpEd = usePostEmployeeEducation();
 
   const validatorOnClick = () => {
     validatoremped(
@@ -16,6 +19,16 @@ const InputFieldsEmpEd = () => {
       fieldofstudy,
       institution
     );
+
+    const EmployeeEducation = {
+      employeeid: employeeid,
+      degree: degree,
+      fieldofstudy: fieldofstudy,
+      institution: institution,
+      graduationdate: graduationdate
+    }
+    console.log (EmployeeEducation)
+    //await postEmpEd.mutateAsync(EmployeeEducation);
   };
 
   return (

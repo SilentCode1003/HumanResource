@@ -2,8 +2,12 @@ import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpDet from "../components/InputFieldsEmpDet";
+import { useRequestEmployeeDetails } from "../API/request/reqEmpDet";
 
 function EmployeeDetails() {
+  const employeedetailsdata = useRequestEmployeeDetails();
+  const filter = employeedetailsdata?.data.data||[];
+  console.log(filter);
   const tableColumns = [
     "Employee ID",
     "First Name",
