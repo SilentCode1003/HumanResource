@@ -2,8 +2,12 @@ import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpEd from "../components/InputFieldsEmpEd";
+import ActionBtn from "../components/buttons";
 
 function EmployeeEducation() {
+  const btn = (row) => {
+    return <ActionBtn />
+  }
   const tableColumns = [
     "Employee ID",
     "Degree",
@@ -32,9 +36,10 @@ function EmployeeEducation() {
       <Header />
       <InputFieldsEmpEd />
       <DynamicTable
-        columns={tableColumns}
+        header={tableColumns}
         data={tableData}
         title="Employee Education Table"
+        renderButtons={btn}
       />
     </>
   );

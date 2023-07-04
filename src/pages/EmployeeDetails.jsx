@@ -3,11 +3,15 @@ import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpDet from "../components/InputFieldsEmpDet";
 import { useRequestEmployeeDetails } from "../API/request/reqEmpDet";
+import ActionBtn from "../components/buttons";
 
 function EmployeeDetails() {
   const employeedetailsdata = useRequestEmployeeDetails();
-  const filter = employeedetailsdata?.data.data||[];
+  const filter = employeedetailsdata?.data?.data||[];
   console.log(filter);
+  const btn = (row) => {
+    return <ActionBtn />
+  }
   const tableColumns = [
     "Employee ID",
     "First Name",
@@ -52,9 +56,10 @@ function EmployeeDetails() {
       <Header />
       <InputFieldsEmpDet />
       <DynamicTable
-        columns={tableColumns}
-        data={tableData}
+        header={tableColumns}
+        data={filter}
         title="Employee Details Table"
+        renderButtons={btn}
       />
     </>
   );

@@ -25,7 +25,7 @@ const InputFieldsEmpDet = () => {
 
   useEffect(() => {
     const concatenatedValue =
-    city + ", " + zip + ", " + barangay + ", " + street;
+      city + ", " + zip + ", " + barangay + ", " + street;
     result(concatenatedValue);
   });
 
@@ -66,30 +66,28 @@ const InputFieldsEmpDet = () => {
       emergencycontactname: emergencycontactname,
       emergencycontactnumber: emergencycontactnumber,
     };
-    console.log (EmployeeDetails) 
-    
-    try{
+    console.log(EmployeeDetails);
 
+    try {
       const response = await postEmpDet.mutateAsync(EmployeeDetails);
 
-      if (response.msg === 'success') {
+      if (response.msg === "success") {
         console.log(response.msg);
         Swal.fire({
-          title: 'Success',
-          text: 'Login successful',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        })
+          title: "Success",
+          text: "Login successful",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
       } else {
         Swal.fire({
-          title: 'Error',
-          text: 'Login failed',
-          icon: 'error',
-          confirmButtonText: 'OK',
+          title: "Error",
+          text: "Login failed",
+          icon: "error",
+          confirmButtonText: "OK",
         });
       }
-    }
-    catch{
+    } catch {
       Swal.fire({
         title: "Invalid Input",
         text: "E R R O R.",
@@ -97,7 +95,7 @@ const InputFieldsEmpDet = () => {
       });
     }
 
-    console.log (postEmpDet)
+    console.log(postEmpDet);
   };
 
   return (
@@ -175,15 +173,18 @@ const InputFieldsEmpDet = () => {
               </div>
               <div className="col-md-4">
                 <label className="form-label">Gender</label>
-                <input
+                <select
                   id="gender"
                   name="gender"
                   type=""
                   className="form-control fieldcolor"
-                  placeholder="Enter your gender"
                   onChange={(e) => setgender(e.target.value)}
                   value={gender}
-                />
+                >
+                  <option value="">- - - Select Gender - - -</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
               </div>
             </div>
             <div className="row mb-2">
@@ -208,14 +209,15 @@ const InputFieldsEmpDet = () => {
                   value={nationality}
                 >
                   <option value="">- - - Select Nationality - - -</option>
-                  <option value="fil">FILIPINO</option>
-                  <option value="cn">CHINESE</option>
-                  <option value="jp">JAPANESE</option>
-                  <option value="kr">KOREAN</option>
-                  <option value="indo">INDONESIAN</option>
-                  <option value="malay">MALAYSIAN</option>
-                  <option value="thai">THAI</option>
-                  <option value="tai">TAIWANESE</option>
+                  <option value="Filipino">FILIPINO</option>
+                  <option value="Chinese">CHINESE</option>
+                  <option value="Japanese">JAPANESE</option>
+                  <option value="Korean">KOREAN</option>
+                  <option value="Indonesian">INDONESIAN</option>
+                  <option value="Malaysian">MALAYSIAN</option>
+                  <option value="Thai">THAI</option>
+                  <option value="Taiwanese">TAIWANESE</option>
+                  <option value="American">AMERICAN</option>
                 </select>
               </div>
               <div className="col-md-4">

@@ -2,8 +2,13 @@ import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpGovID from "../components/InputFieldsEmpGovID";
+import ActionBtn from "../components/buttons";
+import { useRequestEmployeeGovernmentID } from "../API/request/reqEmpGovID";
+
 
 function EmployeeGovernmentID() {
+  const employeegovernmentiddata = useRequestEmployeeGovernmentID();
+  const filter = employeegovernmentiddata?.data?.data||[];
   const tableColumns = [
     "Employee ID",
     "SSS ID",
@@ -26,15 +31,19 @@ function EmployeeGovernmentID() {
       "Created Date": "DD/MM/YY",
     },
   ];
+  const btn = (row) => {
+    return <ActionBtn />
+  }
 
   return (
     <>
       <Header />
       <InputFieldsEmpGovID />
       <DynamicTable
-        columns={tableColumns}
-        data={tableData}
+        header={tableColumns}
+        data={filter}
         title="Employee Government ID Table"
+        renderButtons={btn}
       />
     </>
   );

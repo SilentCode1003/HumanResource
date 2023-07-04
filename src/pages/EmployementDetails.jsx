@@ -1,10 +1,13 @@
 import "../assets/style2.css";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+import ActionBtn from "../components/buttons";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmploymentDet from "../components/InputFieldsEmploymentDet";
 
 function EmployementDetails() {
+  const btn = (row) => {
+    return <ActionBtn />
+  }
   const tableColumns = [
     "Employee ID",
     "Department",
@@ -37,9 +40,10 @@ function EmployementDetails() {
       <Header />
       <InputFieldsEmploymentDet />
       <DynamicTable
-        columns={tableColumns}
+        header={tableColumns}
         data={tableData}
         title="Employment Details Table"
+        renderButtons={btn}
       />
     </>
   );

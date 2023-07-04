@@ -2,8 +2,12 @@ import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpExp from "../components/InputFieldsEmpExp";
+import ActionBtn from "../components/buttons";
 
 function EmployeeWorkExperience() {
+  const btn = (row) => {
+    return <ActionBtn />
+  }
   const tableColumns = [
     "Employee ID",
     "Company",
@@ -34,9 +38,10 @@ function EmployeeWorkExperience() {
       <Header />
       <InputFieldsEmpExp />
       <DynamicTable
-        columns={tableColumns}
+        header={tableColumns}
         data={tableData}
         title="Employee Work Experience Table"
+        renderButtons={btn}
       />
     </>
   );

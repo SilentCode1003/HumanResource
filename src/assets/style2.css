@@ -8,6 +8,10 @@
   --clr-bg-table: #ff6459;
 }
 
+.table-container{
+  overflow-x: auto;
+}
+
 .btnclr{
   color: #fff !important;
 }
