@@ -1,6 +1,7 @@
 import { validatoremplodet } from "../inputfield_validation/validator";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
+import { usePostEmploymentDetails } from "../API/submit/postEmploymentDet";
 
 const InputFieldsEmploymentDet = () => {
   const [employeeid, setemployeeid] = useState("");
@@ -9,10 +10,10 @@ const InputFieldsEmploymentDet = () => {
   const [department, setdepartment] = useState("");
   const [dateofhire, setdateofhire] = useState("");
   const [probationperiod, setprobationperiod] = useState("");
-  const [performancereviewschedule, setperformancereviewschedule] =
-    useState("");
+  const [performancereviewschedule, setperformancereviewschedule] = useState("");
+  const postEmploymentDet = usePostEmploymentDetails();
 
-  const validatorOnClick = () => {
+    const validatorOnClick = async () => {
     validatoremplodet(
       employeeid,
       salary,
@@ -22,6 +23,19 @@ const InputFieldsEmploymentDet = () => {
       probationperiod,
       performancereviewschedule
     );
+    const EmploymentDetails = {
+      employeeid: employeeid,
+      salary: salary,
+      employmentstatus: employmentstatus,
+      department: department,
+      dateofhire: dateofhire,
+      probationperiod: probationperiod,
+      performancereviewschedule: performancereviewschedule
+    }
+    console.log(EmploymentDetails);
+    console.log(postEmploymentDet);
+    const response = await postEmploymentDet.mutateAsync(EmploymentDetails);
+    
   };
 
   useEffect(() => {

@@ -1,8 +1,8 @@
 import { validatorgovid } from "../inputfield_validation/validator";
-import Swal from "sweetalert2";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
 import { usePostEmployeeGovernmentID } from "../API/submit/postEmpGovID";
+import Swal from "sweetalert2";
 
 const InputFieldsEmpGovID = () => {
   const [employeeid, setemployeeid] = useState("");
@@ -13,55 +13,70 @@ const InputFieldsEmpGovID = () => {
   const postEmpGovID = usePostEmployeeGovernmentID();
 
   const validatorOnClick = async () => {
-    validatorgovid(employeeid, sssid, pagibigid, philhealth, tinid);
+    validatorgovid(
+      employeeid,
+      sssid,
+      pagibigid,
+      philhealth,
+      tinid,
+      async(status, result) => 
+       {
+        console.log(`STATUS: ${status} RESULT: ${result}`);
+        if (!status) {
+          console.log(result);
+          Swal.fire({
+            title: "Invalid Input",
+            text: `Required Field: ${result}`,
+            icon: "error",
+          });
+        }
+        else{
+          const EmployeeGovernmentID = {
+            employeeid: employeeid,
+            sssid: sssid,
+            pagibigid: pagibigid,
+            philhealth: philhealth,
+            tinid: tinid
+          }
+          console.log(EmployeeGovernmentID);
+    
+          try {
+            const response = await postEmpGovID.mutateAsync(EmployeeGovernmentID);
+            console.log(response.msg);
+    
+            if (response.msg === "success") {
+              Swal.fire({
+                title: "Success",
+                text: "Entry successful",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "Entry failed",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } catch {
+            Swal.fire({
+              title: "Invalid Input",
+              text: "E R R O R.",
+              icon: "error",
+            });
+          }
+          console.log(postEmpGovID);
+        }
+      }
+    );
 
-    const EmployeeGovernmentID = {
-      employeeid: employeeid,
-      sssid: sssid,
-      pagibigid: pagibigid,
-      philhealth: philhealth,
-      tinid: tinid
-    }
-    console.log(EmployeeGovernmentID);
-
-    const response = await postEmpGovID.mutateAsync(EmployeeGovernmentID);
-    // try {
-      
-
-    //   if (response.msg === "success") {
-    //     console.log(response.msg);
-    //     Swal.fire({
-    //       title: "Success",
-    //       text: "Login successful",
-    //       icon: "success",
-    //       confirmButtonText: "OK",
-    //     });
-    //   } else {
-    //     Swal.fire({
-    //       title: "Error",
-    //       text: "Login failed",
-    //       icon: "error",
-    //       confirmButtonText: "OK",
-    //     });
-    //   }
-    // } catch {
-    //   Swal.fire({
-    //     title: "Invalid Input",
-    //     text: "E R R O R.",
-    //     icon: "error",
-    //   });
-    // }
-  
-    console.log(postEmpGovID);
+    
   };
 
   useEffect(() => {
     validateNumberInput();
   }, []);
-
-  
-
-  
 
   return (
     <div className="row mb-2 ">
@@ -84,6 +99,7 @@ const InputFieldsEmpGovID = () => {
                   <option value="789456123">789456123</option>
                   <option value="741852963">741852963</option>
                   <option value="963852741">963852741</option>
+                  <option value="965745214">965745214</option>
                 </select>
               </div>
             </div>

@@ -1,11 +1,7 @@
 import Swal from "sweetalert2";
 
-export const validatorlogin = (
-  username, password
-) => {
-  if (
-    username === "" || password === ""
-  ) {
+export const validatorlogin = (username, password) => {
+  if (username === "" || password === "") {
     Swal.fire({
       title: "Invalid Input",
       text: "Please select values for all input fields.",
@@ -79,29 +75,30 @@ export const validatorgovid = (
   sssid,
   pagibigid,
   philhealth,
-  tinid
+  tinid,
+  callback
 ) => {
-  if (
-    employeeid === "" ||
-    sssid === "" ||
-    pagibigid === "" ||
-    philhealth === "" ||
-    tinid === ""
-  ) {
-    Swal.fire({
-      title: "Invalid Input",
-      text: "Please select values for all input fields.",
-      icon: "error",
-    });
-    return;
-  } else {
-    Swal.fire({
-      title: "SUCCESSFUL!",
-      text: "ENTRY COMPLETE!",
-      icon: "success",
-    });
-    return;
+  let message = "";
+  if (employeeid === "") {
+    message += "Employee ID ";
   }
+  if (sssid === "") {
+    message += "SSS ID ";
+  }
+  if (pagibigid === "") {
+    message += "Pagibigid ID ";
+  }
+  if (philhealth === "") {
+    message += "Philhealth ID ";
+  }
+  if (tinid === "") {
+    message += "Tinid ID ";
+  }
+
+  if (message != "") {
+    return callback(false, message);
+  }
+  return callback(true, null);
 };
 
 export const validatoremplodet = (

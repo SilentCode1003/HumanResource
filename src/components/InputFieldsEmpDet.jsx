@@ -67,34 +67,7 @@ const InputFieldsEmpDet = () => {
       emergencycontactnumber: emergencycontactnumber,
     };
     console.log(EmployeeDetails);
-
-    try {
-      const response = await postEmpDet.mutateAsync(EmployeeDetails);
-
-      if (response.msg === "success") {
-        console.log(response.msg);
-        Swal.fire({
-          title: "Success",
-          text: "Login successful",
-          icon: "success",
-          confirmButtonText: "OK",
-        });
-      } else {
-        Swal.fire({
-          title: "Error",
-          text: "Login failed",
-          icon: "error",
-          confirmButtonText: "OK",
-        });
-      }
-    } catch {
-      Swal.fire({
-        title: "Invalid Input",
-        text: "E R R O R.",
-        icon: "error",
-      });
-    }
-
+    const response = await postEmpDet.mutateAsync(EmployeeDetails);
     console.log(postEmpDet);
   };
 
