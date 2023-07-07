@@ -13,22 +13,62 @@ const InputFieldsEmpEd = () => {
 
   const validatorOnClick = () => {
     validatoremped(
-      graduationdate,
       employeeid,
       degree,
       fieldofstudy,
-      institution
+      institution,
+      graduationdate,
+      async(status, result) => 
+       {
+        console.log(`STATUS: ${status} RESULT: ${result}`);
+        if (!status) {
+          console.log(result);
+          Swal.fire({
+            title: "Blank Input Field(s) Detected",
+            text: `Required Field: ${result}`,
+            icon: "error",
+          });
+        }
+        else{
+          const EmployeeEducation = {
+            employeeid: employeeid,
+            degree: degree,
+            fieldofstudy: fieldofstudy,
+            institution: institution,
+            graduationdate: graduationdate
+          }
+          console.log(EmployeeEducation);
+    
+          try {
+            const response = await postEmpEd.mutateAsync(EmployeeEducation);
+            console.log(response.msg);
+    
+            if (response.msg === "success") {
+              Swal.fire({
+                title: "Success",
+                text: "Entry successful",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "Entry failed",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } catch {
+            Swal.fire({
+              title: "Invalid Input",
+              text: "E R R O R.",
+              icon: "error",
+            });
+          }
+          console.log(postEmpEd);
+        }
+      }
     );
-
-    const EmployeeEducation = {
-      employeeid: employeeid,
-      degree: degree,
-      fieldofstudy: fieldofstudy,
-      institution: institution,
-      graduationdate: graduationdate
-    }
-    console.log (EmployeeEducation)
-    //await postEmpEd.mutateAsync(EmployeeEducation);
   };
 
   return (

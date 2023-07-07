@@ -162,30 +162,31 @@ export const validatoremped = (
   degree,
   fieldofstudy,
   institution,
-  graduationdate
-) => {
-  if (
-    employeeid === "" ||
-    degree === "" ||
-    fieldofstudy === "" ||
-    institution === "" ||
-    graduationdate === ""
-  ) {
-    Swal.fire({
-      title: "Invalid Input",
-      text: "Please select values for all input fields.",
-      icon: "error",
-    });
-    return;
-  } else {
-    Swal.fire({
-      title: "SUCCESSFUL!",
-      text: "ENTRY COMPLETE!",
-      icon: "success",
-    });
-    return;
-  }
-};
+  graduationdate,
+  callback
+  ) => {
+    let message = "";
+    if (employeeid === "") {
+      message += "Employee ID ";
+    }
+    if (degree === "") {
+      message += "Degree ";
+    }
+    if (fieldofstudy === "") {
+      message += "Field of Study ";
+    }
+    if (institution === "") {
+      message += "Institution ";
+    }
+    if (graduationdate === "") {
+      message += "Graduation Date ";
+    }
+  
+    if (message != "") {
+      return callback(false, message);
+    }
+    return callback(true, null);
+  };
 
 export const validatorempexp = (
   employeeid,
