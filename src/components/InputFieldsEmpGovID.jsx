@@ -25,7 +25,7 @@ const InputFieldsEmpGovID = () => {
         if (!status) {
           console.log(result);
           Swal.fire({
-            title: "Invalid Input",
+            title: "Blank Input Field(s) Detected",
             text: `Required Field: ${result}`,
             icon: "error",
           });

@@ -49,26 +49,64 @@ const InputFieldsEmpDet = () => {
       city,
       zip,
       barangay,
-      street
+      street,
+      async(status, result) => 
+       {
+        console.log(`STATUS: ${status} RESULT: ${result}`);
+        if (!status) {
+          console.log(result);
+          Swal.fire({
+            title: "Blank Input Field(s) Detected",
+            text: `Required Field: ${result}`,
+            icon: "error",
+          });
+        }
+        else{
+          const EmployeeDetails = {
+            firstname: firstname,
+            middlename: middlename,
+            lastname: lastname,
+            gender: gender,
+            contactnumber: contactnumber,
+            email: email,
+            emergencycontactname: emergencycontactname,
+            emergencycontactnumber: emergencycontactnumber,
+            dateofbirth: dateofbirth,
+            nationality: nationality,
+            maritalstatus: maritalstatus,
+            address: address,
+          }
+          console.log(EmployeeDetails);
+          try {
+            const response = await postEmpDet.mutateAsync(EmployeeDetails);
+            console.log(response.msg);
+    
+            if (response.msg === "success") {
+              Swal.fire({
+                title: "Success",
+                text: "Entry successful",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "Entry failed",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } catch {
+            Swal.fire({
+              title: "Invalid Input",
+              text: "E R R O R.",
+              icon: "error",
+            });
+          }
+          console.log(postEmpDet);
+        }
+      }
     );
-
-    const EmployeeDetails = {
-      firstname: firstname,
-      middlename: middlename,
-      lastname: lastname,
-      gender: gender,
-      dateofbirth: dateofbirth,
-      address: address,
-      contactnumber: contactnumber,
-      email: email,
-      nationality: nationality,
-      maritalstatus: maritalstatus,
-      emergencycontactname: emergencycontactname,
-      emergencycontactnumber: emergencycontactnumber,
-    };
-    console.log(EmployeeDetails);
-    const response = await postEmpDet.mutateAsync(EmployeeDetails);
-    console.log(postEmpDet);
   };
 
   return (
