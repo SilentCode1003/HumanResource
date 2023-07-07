@@ -19,7 +19,6 @@ export const validatorlogin = (username, password) => {
 };
 
 export const validatorempdet = (
-  employeeid,
   firstname,
   middlename,
   lastname,
@@ -31,43 +30,62 @@ export const validatorempdet = (
   dateofbirth,
   nationality,
   maritalstatus,
-  input1,
-  input2,
-  input3,
-  input4
-) => {
-  if (
-    employeeid === "" ||
-    firstname === "" ||
-    middlename === "" ||
-    lastname === "" ||
-    gender === "" ||
-    contactnumber === "" ||
-    email === "" ||
-    emergencycontactname === "" ||
-    emergencycontactnumber === "" ||
-    dateofbirth === "" ||
-    nationality === "" ||
-    maritalstatus === "" ||
-    input1 === "" ||
-    input2 === "" ||
-    input3 === "" ||
-    input4 === ""
-  ) {
-    Swal.fire({
-      title: "Invalid Input",
-      text: "Please select values for all input fields.",
-      icon: "error",
-    });
-    return;
-  } else {
-    Swal.fire({
-      title: "SUCCESSFUL!",
-      text: "ENTRY COMPLETE!",
-      icon: "success",
-    });
-    return;
-  }
+  city,
+  zip,
+  barangay,
+  street,
+  callback
+  ) => {
+    let message = "";
+    if (firstname === "") {
+      message += "First Name ";
+    }
+    if (middlename === "") {
+      message += "Middle Name ";
+    }
+    if (lastname === "") {
+      message += "Last Name ";
+    }
+    if (gender === "") {
+      message += "Gender ";
+    }
+    if (contactnumber === "") {
+      message += "Contact No. ";
+    }
+    if (email === "") {
+      message += "E-mail  ";
+    }
+    if (emergencycontactname === "") {
+      message += "Emergency Contact Name ";
+    }
+    if (emergencycontactnumber === "") {
+      message += "Emergency Contact No. ";
+    }
+    if (dateofbirth === "") {
+      message += "Birthday ";
+    }
+    if (nationality === "") {
+      message += "Nationality ";
+    }
+    if (maritalstatus === "") {
+      message += "Marital Status ";
+    }
+    if (city === "") {
+      message += "City ";
+    }
+    if (zip === "") {
+      message += "ZIP ";
+    }
+    if (barangay === "") {
+      message += "Barangay ";
+    }
+    if (street === "") {
+      message += "Street ";
+    }
+    if (message != "") {
+      return callback(false, message);
+    }
+    return callback(true, null);
 };
 
 export const validatorgovid = (
