@@ -2,6 +2,7 @@ import { validatoremplodet } from "../inputfield_validation/validator";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
 import { usePostEmploymentDetails } from "../API/submit/postEmploymentDet";
+import Swal from "sweetalert2";
 
 const InputFieldsEmploymentDet = () => {
   const [employeeid, setemployeeid] = useState("");
@@ -10,10 +11,11 @@ const InputFieldsEmploymentDet = () => {
   const [department, setdepartment] = useState("");
   const [dateofhire, setdateofhire] = useState("");
   const [probationperiod, setprobationperiod] = useState("");
-  const [performancereviewschedule, setperformancereviewschedule] = useState("");
+  const [performancereviewschedule, setperformancereviewschedule] =
+    useState("");
   const postEmploymentDet = usePostEmploymentDetails();
 
-    const validatorOnClick = async () => {
+  const validatorOnClick = async () => {
     validatoremplodet(
       employeeid,
       salary,
@@ -21,21 +23,60 @@ const InputFieldsEmploymentDet = () => {
       department,
       dateofhire,
       probationperiod,
-      performancereviewschedule
+      performancereviewschedule,
+      async (status, result) => {
+        console.log(`STATUS: ${status} RESULT: ${result}`);
+        if (!status) {
+          console.log(result);
+          Swal.fire({
+            title: "Blank Input Field(s) Detected",
+            text: `Required Field: ${result}`,
+            icon: "error",
+          });
+        } else {
+          const EmploymentDetails = {
+            employeeid: employeeid,
+            salary: salary,
+            employmentstatus: employmentstatus,
+            department: department,
+            dateofhire: dateofhire,
+            probationperiod: probationperiod,
+            performancereviewschedule: performancereviewschedule,
+          };
+          console.log(EmploymentDetails);
+
+          try {
+            const response = await postEmploymentDet.mutateAsync(
+              EmploymentDetails
+            );
+            console.log(response.msg);
+
+            if (response.msg === "success") {
+              Swal.fire({
+                title: "Success",
+                text: "Entry successful",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "Entry failed",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } catch {
+            Swal.fire({
+              title: "Invalid Input",
+              text: "E R R O R.",
+              icon: "error",
+            });
+          }
+          console.log(postEmploymentDet);
+        }
+      }
     );
-    const EmploymentDetails = {
-      employeeid: employeeid,
-      salary: salary,
-      employmentstatus: employmentstatus,
-      department: department,
-      dateofhire: dateofhire,
-      probationperiod: probationperiod,
-      performancereviewschedule: performancereviewschedule
-    }
-    console.log(EmploymentDetails);
-    console.log(postEmploymentDet);
-    const response = await postEmploymentDet.mutateAsync(EmploymentDetails);
-    
   };
 
   useEffect(() => {
