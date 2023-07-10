@@ -1,5 +1,7 @@
 import { validatorempexp } from "../inputfield_validation/validator";
+import Swal from "sweetalert2";
 import React, { useState } from "react";
+import { usePostEmployeeExperience } from "../API/submit/postEmpExp";
 
 const InputFieldsEmpExp = () => {
   const [employeeid, setemployeeid] = useState("");
@@ -8,9 +10,66 @@ const InputFieldsEmpExp = () => {
   const [jobdescription, setInput3] = useState("");
   const [startdate, setstartdate] = useState("");
   const [enddate, setenddate] = useState("");
+  const postEmpExp = usePostEmployeeExperience();
 
   const validatorOnClick = () => {
-    validatorempexp(employeeid, company, jobtitle, jobdescription, startdate, enddate);
+    validatorempexp(
+      employeeid,
+      company,
+      jobtitle,
+      jobdescription,
+      startdate,
+      enddate,
+      async (status, result) => {
+        console.log(`STATUS: ${status} RESULT: ${result}`);
+        if (!status) {
+          console.log(result);
+          Swal.fire({
+            title: "Blank Input Field(s) Detected",
+            text: `Required Field: ${result}`,
+            icon: "error",
+          });
+        } else {
+          const EmployeeExperience = {
+            employeeid: employeeid,
+            company: company,
+            jobtitle: jobtitle,
+            jobdescription: jobdescription,
+            startdate: startdate,
+            enddate: enddate
+          };
+          console.log(EmployeeExperience);
+
+          try {
+            const response = await postEmpExp.mutateAsync(EmployeeExperience);
+            console.log(response.msg);
+
+            if (response.msg === "success") {
+              Swal.fire({
+                title: "Success",
+                text: "Entry successful",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "Entry failed",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } catch {
+            Swal.fire({
+              title: "Invalid Input",
+              text: "E R R O R.",
+              icon: "error",
+            });
+          }
+          console.log(postEmpExp);
+        }
+      }
+    );
   };
 
   return (

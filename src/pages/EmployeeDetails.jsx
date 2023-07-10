@@ -30,27 +30,7 @@ function EmployeeDetails() {
     "Created by",
     "Created Date",
   ];
-  const tableData = [
-    {
-      "Employee ID": "1001",
-      "First Name": "Joe",
-      "Middle Name": "Roegan",
-      "Last Name": "Mama",
-      Gender: "LGBTQwasWexExort",
-      Birthday: "DD/MM/YY",
-      Address: "Somewhere",
-      "Contact No.": "0969420lmao",
-      "E-mail": "Deeznutz@gmail.com",
-      Nationality: "Caucasian",
-      "Marital Status": "Married to your mom",
-      "Emergency Contact Name": "Joe Biden",
-      "Emergency No.": "He does not know",
-      Status: "Pogging",
-      "Created by": "Your lord and savior",
-      "Created Date": "DD/MM/YY",
-    },
-  ];
-
+  
   return (
     <>
       <Header />

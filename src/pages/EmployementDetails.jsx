@@ -24,21 +24,7 @@ function EmployementDetails() {
     "Created by",
     "Created Date",
   ];
-  const tableData = [
-    {
-      "Employee ID": "1001",
-      Department: "123456789",
-      "Hired Date": "123456789",
-      "Employment Status": "789456123",
-      Salary: "123456789",
-      "Probation Period": "741258963",
-      "Performance Review Schedule": "MM/DD/YY",
-      Status: "ACTIVE",
-      "Created by": "Me",
-      "Created Date": "DD/MM/YY",
-    },
-  ];
-
+  
   return (
     <>
       <Header />

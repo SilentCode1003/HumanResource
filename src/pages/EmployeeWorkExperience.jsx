@@ -3,8 +3,11 @@ import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpExp from "../components/InputFieldsEmpExp";
 import ActionBtn from "../components/buttons";
+import { useRequestEmployeeExperience } from "../API/request/reqEmpExp";
 
 function EmployeeWorkExperience() {
+  const employeeworkexperiencedata = useRequestEmployeeExperience();
+  const filter = employeeworkexperiencedata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
@@ -19,27 +22,14 @@ function EmployeeWorkExperience() {
     "Created by",
     "Created Date",
   ];
-  const tableData = [
-    {
-      "Employee ID": "1001",
-      Company: "123456789",
-      "Job Title": "123456789",
-      "Start Date": "789456123",
-      "End Date": "741258963",
-      "Job Description": "123456789",
-      Status: "ACTIVE",
-      "Created by": "Me",
-      "Created Date": "DD/MM/YY",
-    },
-  ];
-
+  
   return (
     <>
       <Header />
       <InputFieldsEmpExp />
       <DynamicTable
         header={tableColumns}
-        data={tableData}
+        data={filter}
         title="Employee Work Experience Table"
         renderButtons={btn}
       />

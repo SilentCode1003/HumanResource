@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Pagination from 'react-bootstrap/Pagination';
+import '../assets/style2.css';
 
 const ITEMS_PER_PAGE = 10;
 
