@@ -7,10 +7,11 @@ import { useRequestEmployeeGovernmentID } from "../API/request/reqEmpGovID";
 
 function EmployeeGovernmentID() {
   const employeegovernmentiddata = useRequestEmployeeGovernmentID();
-  const filter = employeegovernmentiddata?.data?.data||[];
+  const filterfortable = employeegovernmentiddata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
+  console.log(filterfortable);
   const tableColumns = [
     "Employee ID",
     "SSS ID",
@@ -28,7 +29,7 @@ function EmployeeGovernmentID() {
       <InputFieldsEmpGovID />
       <DynamicTable
         header={tableColumns}
-        data={filter}
+        data={filterfortable}
         title="Employee Government ID Table"
         renderButtons={btn}
       />

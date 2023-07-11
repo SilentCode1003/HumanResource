@@ -89,7 +89,7 @@ export const validatorempdet = (
 };
 
 export const validatorgovid = (
-  employeeid,
+  Employeeid,
   sssid,
   pagibigid,
   philhealth,
@@ -97,7 +97,7 @@ export const validatorgovid = (
   callback
 ) => {
   let message = "";
-  if (employeeid === "") {
+  if (Employeeid === "") {
     message += "Employee ID ";
   }
   if (sssid === "") {

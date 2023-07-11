@@ -10,5 +10,5 @@ export const useRequestEmployeeDetails = () => {
   return useQuery({
     queryKey: ['request'],
     queryFn: reqEmpDet,
-  })
+  });
 }

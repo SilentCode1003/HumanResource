@@ -2,25 +2,33 @@ import { validatorgovid } from "../inputfield_validation/validator";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
 import { usePostEmployeeGovernmentID } from "../API/submit/postEmpGovID";
+import { useRequestEmployeeDetails } from "../API/request/reqEmpDet";
 import Swal from "sweetalert2";
 
 const InputFieldsEmpGovID = () => {
-  const [employeeid, setemployeeid] = useState("");
+  const postEmpGovID = usePostEmployeeGovernmentID();
+  const EmployeeID = useRequestEmployeeDetails();
+
+  const [Employeeid, setemployeeid] = useState("");
   const [sssid, setsssid] = useState("");
   const [pagibigid, setpagibigid] = useState("");
   const [philhealth, setphilhealth] = useState("");
   const [tinid, settinid] = useState("");
-  const postEmpGovID = usePostEmployeeGovernmentID();
+
+  //EmployeeID
+  const employees = EmployeeID?.data?.data || [];
+  const filteremployeeid = employees.map((item) => item.employeeid);
+  console.log(filteremployeeid);
+  console.log(Employeeid);
 
   const validatorOnClick = async () => {
     validatorgovid(
-      employeeid,
+      Employeeid,
       sssid,
       pagibigid,
       philhealth,
       tinid,
-      async(status, result) => 
-       {
+      async (status, result) => {
         console.log(`STATUS: ${status} RESULT: ${result}`);
         if (!status) {
           console.log(result);
@@ -29,21 +37,22 @@ const InputFieldsEmpGovID = () => {
             text: `Required Field: ${result}`,
             icon: "error",
           });
-        }
-        else{
+        } else {
           const EmployeeGovernmentID = {
-            employeeid: employeeid,
+            employeeid: Employeeid,
             sssid: sssid,
             pagibigid: pagibigid,
             philhealth: philhealth,
-            tinid: tinid
-          }
+            tinid: tinid,
+          };
           console.log(EmployeeGovernmentID);
-    
+
           try {
-            const response = await postEmpGovID.mutateAsync(EmployeeGovernmentID);
+            const response = await postEmpGovID.mutateAsync(
+              EmployeeGovernmentID
+            );
             console.log(response.msg);
-    
+
             if (response.msg === "success") {
               Swal.fire({
                 title: "Success",
@@ -70,8 +79,6 @@ const InputFieldsEmpGovID = () => {
         }
       }
     );
-
-    
   };
 
   useEffect(() => {
@@ -88,18 +95,16 @@ const InputFieldsEmpGovID = () => {
                 <h2 className="mb-4">Employee Government ID</h2>
                 <label className="form-label">Employee ID</label>
                 <select
-                  className="entry-input form-control fieldcolor"
-                  name="employeeid"
-                  id="employeeid"
+                  className="col-md-6 entry-input form-control fieldcolor"
                   onChange={(e) => setemployeeid(e.target.value)}
-                  value={employeeid}
+                  value={Employeeid}
                 >
                   <option value="">- - - Select Employee ID - - -</option>
-                  <option value="123456789">123456789</option>
-                  <option value="789456123">789456123</option>
-                  <option value="741852963">741852963</option>
-                  <option value="963852741">963852741</option>
-                  <option value="965745214">965745214</option>
+                  {filteremployeeid.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
