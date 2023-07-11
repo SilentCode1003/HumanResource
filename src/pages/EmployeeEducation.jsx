@@ -3,8 +3,11 @@ import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpEd from "../components/InputFieldsEmpEd";
 import ActionBtn from "../components/buttons";
+import { useRequestEmployeeEducation } from "../API/request/reqEmpEd";
 
 function EmployeeEducation() {
+  const employeeeducationdata = useRequestEmployeeEducation();
+  const filter = employeeeducationdata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
@@ -18,26 +21,14 @@ function EmployeeEducation() {
     "Created by",
     "Created Date",
   ];
-  const tableData = [
-    {
-      "Employee ID": "1001",
-      Degree: "123456789",
-      "Field of Study": "123456789",
-      Institution: "789456123",
-      "Graduation Date": "741258963",
-      Status: "ACTIVE",
-      "Created by": "Me",
-      "Created Date": "DD/MM/YY",
-    },
-  ];
-
+  
   return (
     <>
       <Header />
       <InputFieldsEmpEd />
       <DynamicTable
         header={tableColumns}
-        data={tableData}
+        data={filter}
         title="Employee Education Table"
         renderButtons={btn}
       />

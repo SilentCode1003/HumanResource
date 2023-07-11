@@ -118,10 +118,10 @@ const InputFieldsEmploymentDet = () => {
                   value={department}
                 >
                   <option value="">- - - Select Department - - -</option>
-                  <option value="married">IT</option>
-                  <option value="divorced">HR</option>
-                  <option value="separated">MAINTENANCE</option>
-                  <option value="nvmarried">FIELD</option>
+                  <option value="IT">IT</option>
+                  <option value="HR">HR</option>
+                  <option value="MAINTENANCE">MAINTENANCE</option>
+                  <option value="FIELD">FIELD</option>
                 </select>
               </div>
               <div className="col-md-4">

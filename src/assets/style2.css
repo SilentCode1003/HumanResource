@@ -217,6 +217,21 @@ td {
   color: black !important;
   border: none !important;
 }
+
+.table-scroll-container{
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-width: thin;
+}
+
+.table-container{
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.tablecard{
+  width: 800px;
+}
 /*edits end*/
 
 body {

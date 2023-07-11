@@ -18,18 +18,6 @@ function EmployeeReference() {
     "Created by",
     "Created Date",
   ];
-  const tableData = [
-    {
-      "Employee ID": "1001",
-      "SSS ID": "123456789",
-      "Pag-IBIG ID": "123456789",
-      Philhealth: "789456123",
-      "TIN ID": "741258963",
-      Status: "ACTIVE",
-      "Created by": "Me",
-      "Created Date": "DD/MM/YY",
-    },
-  ];
 
   return (
     <>

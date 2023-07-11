@@ -194,31 +194,33 @@ export const validatorempexp = (
   jobtitle,
   jobdescription,
   startdate,
-  enddate
-) => {
-  if (
-    employeeid === "" ||
-    company === "" ||
-    jobtitle === "" ||
-    jobdescription === "" ||
-    startdate === "" ||
-    enddate === ""
-  ) {
-    Swal.fire({
-      title: "Invalid Input",
-      text: "Please select values for all input fields.",
-      icon: "error",
-    });
-    return;
-  } else {
-    Swal.fire({
-      title: "SUCCESSFUL!",
-      text: "ENTRY COMPLETE!",
-      icon: "success",
-    });
-    return;
-  }
-};
+  enddate,
+  callback
+  ) => {
+    let message = "";
+    if (employeeid === "") {
+      message += "Employee ID ";
+    }
+    if (company === "") {
+      message += "Company ";
+    }
+    if (jobtitle === "") {
+      message += "Job Title ";
+    }
+    if (jobdescription === "") {
+      message += "Job Description ";
+    }
+    if (startdate === "") {
+      message += "Start Date ";
+    }
+    if (enddate === "") {
+      message += "End Date ";
+    }
+    if (message != "") {
+      return callback(false, message);
+    }
+    return callback(true, null);
+  };
 
 export const validatorempref = (
   employeeid,
