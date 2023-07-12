@@ -2,19 +2,28 @@ import { validatorempexp } from "../inputfield_validation/validator";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { usePostEmployeeExperience } from "../API/submit/postEmployeeWorkExperience";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
 
 const InputFieldsEmpExp = () => {
-  const [employeeid, setemployeeid] = useState("");
+  const postEmpExp = usePostEmployeeExperience();
+  const EmployeeID = useRequestEmployeeDetails();
+
+  const [Employeeid, setemployeeid] = useState("");
   const [company, setcompany] = useState("");
   const [jobtitle, setjobtitle] = useState("");
   const [jobdescription, setInput3] = useState("");
   const [startdate, setstartdate] = useState("");
   const [enddate, setenddate] = useState("");
-  const postEmpExp = usePostEmployeeExperience();
+
+  //EmployeeID
+  const employees = EmployeeID?.data?.data || [];
+  const filteremployeeid = employees.map((item) => item.employeeid);
+  console.log(filteremployeeid);
+  console.log(Employeeid);
 
   const validatorOnClick = () => {
     validatorempexp(
-      employeeid,
+      Employeeid,
       company,
       jobtitle,
       jobdescription,
@@ -31,12 +40,12 @@ const InputFieldsEmpExp = () => {
           });
         } else {
           const EmployeeExperience = {
-            employeeid: employeeid,
+            employeeid: Employeeid,
             company: company,
             jobtitle: jobtitle,
             jobdescription: jobdescription,
             startdate: startdate,
-            enddate: enddate
+            enddate: enddate,
           };
           console.log(EmployeeExperience);
 
@@ -54,7 +63,7 @@ const InputFieldsEmpExp = () => {
             } else {
               Swal.fire({
                 title: "Error",
-                text: "Entry failed",
+                text: "ID IS ALREADY IN USE",
                 icon: "error",
                 confirmButtonText: "OK",
               });
@@ -82,17 +91,16 @@ const InputFieldsEmpExp = () => {
                 <h2 className="mb-4">Employee Work Experience</h2>
                 <label className="form-label">Employee ID</label>
                 <select
-                  className="entry-input form-control fieldcolor"
-                  name="employeeid"
-                  id="employeeid"
+                  className="col-md-6 entry-input form-control fieldcolor"
                   onChange={(e) => setemployeeid(e.target.value)}
-                  value={employeeid}
+                  value={Employeeid}
                 >
                   <option value="">- - - Select Employee ID - - -</option>
-                  <option value="123456789">123456789</option>
-                  <option value="789456123">789456123</option>
-                  <option value="741852963">741852963</option>
-                  <option value="963852741">963852741</option>
+                  {filteremployeeid.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
