@@ -1,8 +1,8 @@
 import { validatorgovid } from "../inputfield_validation/validator";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
-import { usePostEmployeeGovernmentID } from "../API/submit/postEmpGovID";
-import { useRequestEmployeeDetails } from "../API/request/reqEmpDet";
+import { usePostEmployeeGovernmentID } from "../API/submit/postEmployeeGovernmentID";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
 import Swal from "sweetalert2";
 
 const InputFieldsEmpGovID = () => {

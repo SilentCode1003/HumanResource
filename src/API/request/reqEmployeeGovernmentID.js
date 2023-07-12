@@ -8,7 +8,7 @@ export const reqEmpGovID = async () => {
 
 export const useRequestEmployeeGovernmentID = () => {
   return useQuery({
-    queryKey: ['request'],
+    queryKey: ['employeegovernmentid'],
     queryFn: reqEmpGovID,
   })
 }

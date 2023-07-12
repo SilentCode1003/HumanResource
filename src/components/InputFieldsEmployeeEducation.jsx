@@ -1,26 +1,25 @@
-import { validatorempexp } from "../inputfield_validation/validator";
-import Swal from "sweetalert2";
+import { validatoremped } from "../inputfield_validation/validator";
 import React, { useState } from "react";
-import { usePostEmployeeExperience } from "../API/submit/postEmpExp";
+import Swal from "sweetalert2";
+import { usePostEmployeeEducation } from "../API/submit/postEmployeeEducation";
 
-const InputFieldsEmpExp = () => {
+const InputFieldsEmpEd = () => {
   const [employeeid, setemployeeid] = useState("");
-  const [company, setcompany] = useState("");
-  const [jobtitle, setjobtitle] = useState("");
-  const [jobdescription, setInput3] = useState("");
-  const [startdate, setstartdate] = useState("");
-  const [enddate, setenddate] = useState("");
-  const postEmpExp = usePostEmployeeExperience();
+  const [degree, setdegree] = useState("");
+  const [fieldofstudy, setfieldofstudy] = useState("");
+  const [institution, setinstitution] = useState("");
+  const [graduationdate, setgraduationdate] = useState("");
+  const postEmpEd = usePostEmployeeEducation();
 
   const validatorOnClick = () => {
-    validatorempexp(
+    validatoremped(
       employeeid,
-      company,
-      jobtitle,
-      jobdescription,
-      startdate,
-      enddate,
-      async (status, result) => {
+      degree,
+      fieldofstudy,
+      institution,
+      graduationdate,
+      async(status, result) => 
+       {
         console.log(`STATUS: ${status} RESULT: ${result}`);
         if (!status) {
           console.log(result);
@@ -29,21 +28,21 @@ const InputFieldsEmpExp = () => {
             text: `Required Field: ${result}`,
             icon: "error",
           });
-        } else {
-          const EmployeeExperience = {
+        }
+        else{
+          const EmployeeEducation = {
             employeeid: employeeid,
-            company: company,
-            jobtitle: jobtitle,
-            jobdescription: jobdescription,
-            startdate: startdate,
-            enddate: enddate
-          };
-          console.log(EmployeeExperience);
-
+            degree: degree,
+            fieldofstudy: fieldofstudy,
+            institution: institution,
+            graduationdate: graduationdate
+          }
+          console.log(EmployeeEducation);
+    
           try {
-            const response = await postEmpExp.mutateAsync(EmployeeExperience);
+            const response = await postEmpEd.mutateAsync(EmployeeEducation);
             console.log(response.msg);
-
+    
             if (response.msg === "success") {
               Swal.fire({
                 title: "Success",
@@ -66,7 +65,7 @@ const InputFieldsEmpExp = () => {
               icon: "error",
             });
           }
-          console.log(postEmpExp);
+          console.log(postEmpEd);
         }
       }
     );
@@ -79,7 +78,7 @@ const InputFieldsEmpExp = () => {
           <div className="card-body inputfieldcolors">
             <div className="row">
               <div className="col-md-12 mb-2">
-                <h2 className="mb-4">Employee Work Experience</h2>
+                <h2 className="mb-4">Employee Education</h2>
                 <label className="form-label">Employee ID</label>
                 <select
                   className="entry-input form-control fieldcolor"
@@ -98,62 +97,52 @@ const InputFieldsEmpExp = () => {
             </div>
             <div className="row mb-4">
               <div className="col-md-6">
-                <label className="form-label">Company</label>
+                <label className="form-label">Degree</label>
                 <input
-                  onChange={(e) => setcompany(e.target.value)}
-                  value={company}
-                  id="company"
-                  name="company"
+                  onChange={(e) => setdegree(e.target.value)}
+                  value={degree}
+                  id="degree"
+                  name="degree"
                   type="text"
                   className="form-control fieldcolor"
-                  placeholder="Enter company"
+                  placeholder="Enter degree"
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label">Job Title</label>
+                <label className="form-label">Field of Study</label>
                 <input
-                  onChange={(e) => setjobtitle(e.target.value)}
-                  value={jobtitle}
-                  id="jobtitle"
-                  name="jobtitle"
+                  onChange={(e) => setfieldofstudy(e.target.value)}
+                  value={fieldofstudy}
+                  id="fieldofstudy"
+                  name="fieldofstudy"
                   type="text"
                   className="form-control fieldcolor"
-                  placeholder="Enter job title"
+                  placeholder="Enter field of study"
                 />
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col-md-4">
-                <label className="form-label">Start Date</label>
+              <div className="col-md-6">
+                <label className="form-label">Institution</label>
                 <input
-                  type="date"
-                  id="startdate"
-                  name="startdate"
-                  className="entry-input form-control fieldcolor"
-                  onChange={(e) => setstartdate(e.target.value)}
-                  value={startdate}
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label">End Date</label>
-                <input
-                  type="date"
-                  id="enddate"
-                  name="enddate"
-                  className="entry-input form-control fieldcolor"
-                  onChange={(e) => setenddate(e.target.value)}
-                  value={enddate}
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label">Job Description</label>
-                <input
-                  onChange={(e) => setInput3(e.target.value)}
-                  value={jobdescription}
-                  id="jobdescription"
-                  name="jobdescription"
+                  onChange={(e) => setinstitution(e.target.value)}
+                  value={institution}
+                  id="institution"
+                  name="institution"
+                  type="tel"
                   className="form-control fieldcolor"
-                  placeholder="Enter job description"
+                  placeholder="Enter institution"
+                />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Graduation Date</label>
+                <input
+                  type="date"
+                  id="graduationdate"
+                  name="graduationdate"
+                  className="entry-input form-control fieldcolor"
+                  onChange={(e) => setgraduationdate(e.target.value)}
+                  value={graduationdate}
                 />
               </div>
             </div>
@@ -176,4 +165,4 @@ const InputFieldsEmpExp = () => {
   );
 };
 
-export default InputFieldsEmpExp;
+export default InputFieldsEmpEd;

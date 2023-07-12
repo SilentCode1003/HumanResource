@@ -1,8 +1,8 @@
 import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
-import InputFieldsEmpDet from "../components/InputFieldsEmpDet";
-import { useRequestEmployeeDetails } from "../API/request/reqEmpDet";
+import InputFieldsEmpDet from "../components/InputFieldsEmployeeDetails";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
 import ActionBtn from "../components/buttons";
 
 function EmployeeDetails() {

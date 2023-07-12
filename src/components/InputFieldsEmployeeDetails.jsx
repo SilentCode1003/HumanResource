@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { usePostEmployeeDetails } from "../API/submit/postEmpDet";
+import { usePostEmployeeDetails } from "../API/submit/postEmployeeDetails";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import { validatorempdet } from "../inputfield_validation/validator";
 

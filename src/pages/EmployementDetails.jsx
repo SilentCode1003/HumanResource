@@ -2,16 +2,16 @@ import "../assets/style2.css";
 import Header from "../components/Header";
 import ActionBtn from "../components/buttons";
 import DynamicTable from "../components/DynamicTable";
-import InputFieldsEmploymentDet from "../components/InputFieldsEmploymentDet";
-import { useRequestEmploymentDetails } from "../API/request/reqEmploymentDet";
+import InputFieldsEmploymentDet from "../components/InputFieldsEmploymentDetails";
+import { useRequestEmploymentDetails } from "../API/request/reqEmploymentDetails";
 
 function EmployementDetails() {
+  const employmentdetailsdata = useRequestEmploymentDetails();
+  const filterfortable = employmentdetailsdata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
-  const employmentdetailsdata = useRequestEmploymentDetails();
-  const filter = employmentdetailsdata?.data?.data||[];
-
+  console.log(filterfortable);
   const tableColumns = [
     "Employee ID",
     "Department",
@@ -31,7 +31,7 @@ function EmployementDetails() {
       <InputFieldsEmploymentDet />
       <DynamicTable
         header={tableColumns}
-        data={filter}
+        data={filterfortable}
         title="Employment Details Table"
         renderButtons={btn}
       />

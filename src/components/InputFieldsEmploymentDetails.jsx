@@ -1,11 +1,15 @@
 import { validatoremplodet } from "../inputfield_validation/validator";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
-import { usePostEmploymentDetails } from "../API/submit/postEmploymentDet";
+import { usePostEmploymentDetails } from "../API/submit/postEmploymentDetails";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
 import Swal from "sweetalert2";
 
 const InputFieldsEmploymentDet = () => {
-  const [employeeid, setemployeeid] = useState("");
+  const postEmploymentDet = usePostEmploymentDetails();
+  const EmployeeID = useRequestEmployeeDetails();
+
+  const [Employeeid, setemployeeid] = useState("");
   const [salary, setsalary] = useState("");
   const [employmentstatus, setemploymentstatus] = useState("");
   const [department, setdepartment] = useState("");
@@ -13,11 +17,16 @@ const InputFieldsEmploymentDet = () => {
   const [probationperiod, setprobationperiod] = useState("");
   const [performancereviewschedule, setperformancereviewschedule] =
     useState("");
-  const postEmploymentDet = usePostEmploymentDetails();
+
+  //EmployeeID
+  const employees = EmployeeID?.data?.data || [];
+  const filteremployeeid = employees.map((item) => item.employeeid);
+  console.log(filteremployeeid);
+  console.log(Employeeid);
 
   const validatorOnClick = async () => {
     validatoremplodet(
-      employeeid,
+      Employeeid,
       salary,
       employmentstatus,
       department,
@@ -35,7 +44,7 @@ const InputFieldsEmploymentDet = () => {
           });
         } else {
           const EmploymentDetails = {
-            employeeid: employeeid,
+            employeeid: Employeeid,
             salary: salary,
             employmentstatus: employmentstatus,
             department: department,
@@ -93,17 +102,16 @@ const InputFieldsEmploymentDet = () => {
                 <h2 className="mb-4">Employment Details</h2>
                 <label className="form-label">Employee ID</label>
                 <select
-                  className="entry-input form-control fieldcolor"
-                  name="employeeid"
-                  id="employeeid"
+                  className="col-md-6 entry-input form-control fieldcolor"
                   onChange={(e) => setemployeeid(e.target.value)}
-                  value={employeeid}
+                  value={Employeeid}
                 >
                   <option value="">- - - Select Employee ID - - -</option>
-                  <option value="123456789">123456789</option>
-                  <option value="789456123">789456123</option>
-                  <option value="741852963">741852963</option>
-                  <option value="963852741">963852741</option>
+                  {filteremployeeid.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>

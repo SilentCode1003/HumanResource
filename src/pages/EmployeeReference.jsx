@@ -1,7 +1,7 @@
 import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
-import InputFieldsEmpRef from "../components/InputFieldsEmpRef";
+import InputFieldsEmpRef from "../components/InputFieldsEmployeeReference";
 import ActionBtn from "../components/buttons";
 
 function EmployeeReference() {
