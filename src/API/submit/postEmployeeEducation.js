@@ -12,6 +12,6 @@ export const usePostEmployeeEducation = () => {
   return useMutation({
     mutationFn: (EmployeeEducation) => postAddEmpEd(EmployeeEducation),
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['request'] }),
+      queryClient.invalidateQueries({ queryKey: ['postemployeeeducation'] }),
   })
 }

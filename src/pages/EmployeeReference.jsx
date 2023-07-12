@@ -3,17 +3,20 @@ import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
 import InputFieldsEmpRef from "../components/InputFieldsEmployeeReference";
 import ActionBtn from "../components/buttons";
+import { useRequestEmployeeReference } from "../API/request/reqEmployeeReference";
 
 function EmployeeReference() {
+  const employeereferencedata = useRequestEmployeeReference();
+  const filterfortable = employeereferencedata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
+  console.log(filterfortable);
   const tableColumns = [
     "Employee ID",
-    "SSS ID",
-    "Pag-IBIG ID",
-    "Philhealth",
-    "TIN ID",
+    "Reference Name",
+    "Relationship",
+    "Contact Info",
     "Status",
     "Created by",
     "Created Date",
@@ -25,7 +28,7 @@ function EmployeeReference() {
       <InputFieldsEmpRef />
       <DynamicTable
         header={tableColumns}
-        data={tableData}
+        data={filterfortable}
         title="Employee Reference Table"
         renderButtons={btn}
       />

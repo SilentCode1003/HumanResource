@@ -223,31 +223,29 @@ export const validatorempexp = (
   };
 
 export const validatorempref = (
-  employeeid,
+  Employeeid,
   referencename,
   relationship,
-  contactinfo
-) => {
-  if (
-    employeeid === "" ||
-    referencename === "" ||
-    relationship === "" ||
-    contactinfo === ""
-  ) {
-    Swal.fire({
-      title: "Invalid Input",
-      text: "Please select values for all input fields.",
-      icon: "error",
-    });
-    return;
-  } else {
-    Swal.fire({
-      title: "SUCCESSFUL!",
-      text: "ENTRY COMPLETE!",
-      icon: "success",
-    });
-    return;
-  }
+  contactinfo,
+  callback
+  ) => {
+    let message = "";
+    if (Employeeid === "") {
+      message += "Employee ID ";
+    }
+    if (referencename === "") {
+      message += "Reference Name ";
+    }
+    if (relationship === "") {
+      message += "Relationship ";
+    }
+    if (contactinfo === "") {
+      message += "Contact Info ";
+    }
+    if (message != "") {
+      return callback(false, message);
+    }
+    return callback(true, null);
 };
 
 export const validateNumberInput = () => {

@@ -1,16 +1,77 @@
 import { validatorempref } from "../inputfield_validation/validator";
 import { validateNumberInput } from "../inputfield_validation/validator";
 import React, { useState, useEffect } from "react";
+import { usePostEmployeeReference } from "../API/submit/postEmployeeReference";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
+import Swal from "sweetalert2";
 
 const InputFieldsEmpRef = () => {
-  
-  const [employeeid, setemployeeid] = useState("");
+  const postEmpRef = usePostEmployeeReference();
+  const EmployeeID = useRequestEmployeeDetails();
+
+  const [Employeeid, setemployeeid] = useState("");
   const [referencename, setreferencename] = useState("");
   const [relationship, setrelationship] = useState("");
   const [contactinfo, setcontactinfo] = useState("");
 
+  //EmployeeID
+  const employees = EmployeeID?.data?.data || [];
+  const filteremployeeid = employees.map((item) => item.employeeid);
+  console.log(filteremployeeid);
+  console.log(Employeeid);
+
   const validatorOnClick = () => {
-    validatorempref(employeeid, referencename, relationship, contactinfo);
+    validatorempref(Employeeid, referencename, relationship, contactinfo,
+      async (status, result) => {
+        console.log(`STATUS: ${status} RESULT: ${result}`);
+        if (!status) {
+          console.log(result);
+          Swal.fire({
+            title: "Blank Input Field(s) Detected",
+            text: `Required Field: ${result}`,
+            icon: "error",
+          });
+        } else {
+          const EmployeeReference = {
+            employeeid: Employeeid,
+            referencename: referencename,
+            relationship: relationship,
+            contactinfo: contactinfo
+          };
+          console.log(EmployeeReference);
+
+          try {
+            const response = await postEmpRef.mutateAsync(
+              EmployeeReference
+            );
+            console.log(response.msg);
+
+            if (response.msg === "success") {
+              Swal.fire({
+                title: "Success",
+                text: "Entry successful",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "ID IS ALREADY IN USE",
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } catch {
+            Swal.fire({
+              title: "Invalid Input",
+              text: " E R R O R",
+              icon: "error",
+            });
+          }
+          console.log(postEmpRef);
+        }
+      }
+      );
   };
 
   useEffect(() => {
@@ -27,17 +88,16 @@ const InputFieldsEmpRef = () => {
                 <h2 className="mb-4">Employee Reference</h2>
                 <label className="form-label">Employee ID</label>
                 <select
-                  className="entry-input form-control fieldcolor"
-                  name="employeeid"
-                  id="employeeid"
+                  className="col-md-6 entry-input form-control fieldcolor"
                   onChange={(e) => setemployeeid(e.target.value)}
-                  value={employeeid}
+                  value={Employeeid}
                 >
                   <option value="">- - - Select Employee ID - - -</option>
-                  <option value="123456789">123456789</option>
-                  <option value="789456123">789456123</option>
-                  <option value="741852963">741852963</option>
-                  <option value="963852741">963852741</option>
+                  {filteremployeeid.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>

@@ -12,6 +12,6 @@ export const usePostEmployeeExperience = () => {
   return useMutation({
     mutationFn: (EmployeeExperience) => postAddEmpExp(EmployeeExperience),
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['request'] }),
+      queryClient.invalidateQueries({ queryKey: ['postemployeeworkexperience'] }),
   })
 }

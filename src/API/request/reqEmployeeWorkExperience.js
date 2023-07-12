@@ -8,7 +8,7 @@ export const reqEmpExp = async () => {
 
 export const useRequestEmployeeExperience = () => {
   return useQuery({
-    queryKey: ['employeeworkexperience'],
+    queryKey: ['reqemployeeworkexperience'],
     queryFn: reqEmpExp,
   })
 }
