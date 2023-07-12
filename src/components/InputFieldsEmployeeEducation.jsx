@@ -35,6 +35,10 @@ const InputFieldsEmpEd = () => {
             title: "Blank Input Field(s) Detected",
             text: `Required Field: ${result}`,
             icon: "error",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
           });
         } else {
           const EmployeeEducation = {

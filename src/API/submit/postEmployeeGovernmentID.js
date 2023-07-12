@@ -12,6 +12,6 @@ export const usePostEmployeeGovernmentID = () => {
   return useMutation({
     mutationFn: (EmployeeGovernmentID) => postAddEmpGovID(EmployeeGovernmentID),
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['request'] }),
+      queryClient.invalidateQueries({ queryKey: ['postemployeegovernmentid'] }),
   })
 }

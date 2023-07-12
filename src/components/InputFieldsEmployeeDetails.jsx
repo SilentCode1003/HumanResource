@@ -80,13 +80,17 @@ const InputFieldsEmpDet = () => {
           try {
             const response = await postEmpDet.mutateAsync(EmployeeDetails);
             console.log(response.msg);
-    
+            
             if (response.msg === "success") {
               Swal.fire({
                 title: "Success",
                 text: "Entry successful",
                 icon: "success",
                 confirmButtonText: "OK",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
               });
             } else {
               Swal.fire({
