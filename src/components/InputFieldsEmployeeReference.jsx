@@ -52,6 +52,10 @@ const InputFieldsEmpRef = () => {
                 text: "Entry successful",
                 icon: "success",
                 confirmButtonText: "OK",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
               });
             } else {
               Swal.fire({
