@@ -91,7 +91,7 @@ const InputFieldsEmpDet = () => {
             } else {
               Swal.fire({
                 title: "Error",
-                text: "Entry failed",
+                text: "ID IS ALREADY IN USE",
                 icon: "error",
                 confirmButtonText: "OK",
               });

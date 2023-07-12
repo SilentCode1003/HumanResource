@@ -63,7 +63,7 @@ const InputFieldsEmpGovID = () => {
             } else {
               Swal.fire({
                 title: "Error",
-                text: "Entry failed",
+                text: "ID IS ALREADY IN USE",
                 icon: "error",
                 confirmButtonText: "OK",
               });
@@ -71,7 +71,7 @@ const InputFieldsEmpGovID = () => {
           } catch {
             Swal.fire({
               title: "Invalid Input",
-              text: "E R R O R.",
+              text: " E R R O R",
               icon: "error",
             });
           }
