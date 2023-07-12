@@ -5,13 +5,13 @@ const ActionBtn = () => {
     return(    
         <>
         <Col>
-        <Button variant="outline-danger" href="#">
+        <Button className="w-100" variant="outline-danger" href="#">
             Edit
         </Button>
         </Col>
         
         <Col>
-        <Button variant="outline-danger" href="#">
+        <Button className="w-100 mt-1" variant="outline-danger" href="#">
             Active
         </Button>
         </Col>

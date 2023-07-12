@@ -1,16 +1,17 @@
 import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
-import InputFieldsEmpEd from "../components/InputFieldsEmpEd";
+import InputFieldsEmpEd from "../components/InputFieldsEmployeeEducation";
 import ActionBtn from "../components/buttons";
-import { useRequestEmployeeEducation } from "../API/request/reqEmpEd";
+import { useRequestEmployeeEducation } from "../API/request/reqEmployeeEducation";
 
 function EmployeeEducation() {
   const employeeeducationdata = useRequestEmployeeEducation();
-  const filter = employeeeducationdata?.data?.data||[];
+  const filterfortable = employeeeducationdata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
+  console.log(filterfortable);
   const tableColumns = [
     "Employee ID",
     "Degree",
@@ -28,7 +29,7 @@ function EmployeeEducation() {
       <InputFieldsEmpEd />
       <DynamicTable
         header={tableColumns}
-        data={filter}
+        data={filterfortable}
         title="Employee Education Table"
         renderButtons={btn}
       />

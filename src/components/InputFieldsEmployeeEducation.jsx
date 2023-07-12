@@ -1,25 +1,33 @@
 import { validatoremped } from "../inputfield_validation/validator";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { usePostEmployeeEducation } from "../API/submit/postEmpEd";
+import { usePostEmployeeEducation } from "../API/submit/postEmployeeEducation";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
 
 const InputFieldsEmpEd = () => {
-  const [employeeid, setemployeeid] = useState("");
+  const postEmpEd = usePostEmployeeEducation();
+  const EmployeeID = useRequestEmployeeDetails();
+
+  const [Employeeid, setemployeeid] = useState("");
   const [degree, setdegree] = useState("");
   const [fieldofstudy, setfieldofstudy] = useState("");
   const [institution, setinstitution] = useState("");
   const [graduationdate, setgraduationdate] = useState("");
-  const postEmpEd = usePostEmployeeEducation();
+
+  //EmployeeID
+  const employees = EmployeeID?.data?.data || [];
+  const filteremployeeid = employees.map((item) => item.employeeid);
+  console.log(filteremployeeid);
+  console.log(Employeeid);
 
   const validatorOnClick = () => {
     validatoremped(
-      employeeid,
+      Employeeid,
       degree,
       fieldofstudy,
       institution,
       graduationdate,
-      async(status, result) => 
-       {
+      async (status, result) => {
         console.log(`STATUS: ${status} RESULT: ${result}`);
         if (!status) {
           console.log(result);
@@ -28,21 +36,20 @@ const InputFieldsEmpEd = () => {
             text: `Required Field: ${result}`,
             icon: "error",
           });
-        }
-        else{
+        } else {
           const EmployeeEducation = {
-            employeeid: employeeid,
+            employeeid: Employeeid,
             degree: degree,
             fieldofstudy: fieldofstudy,
             institution: institution,
-            graduationdate: graduationdate
-          }
+            graduationdate: graduationdate,
+          };
           console.log(EmployeeEducation);
-    
+
           try {
             const response = await postEmpEd.mutateAsync(EmployeeEducation);
             console.log(response.msg);
-    
+
             if (response.msg === "success") {
               Swal.fire({
                 title: "Success",
@@ -53,7 +60,7 @@ const InputFieldsEmpEd = () => {
             } else {
               Swal.fire({
                 title: "Error",
-                text: "Entry failed",
+                text: "ID IS ALREADY IN USE",
                 icon: "error",
                 confirmButtonText: "OK",
               });
@@ -81,17 +88,16 @@ const InputFieldsEmpEd = () => {
                 <h2 className="mb-4">Employee Education</h2>
                 <label className="form-label">Employee ID</label>
                 <select
-                  className="entry-input form-control fieldcolor"
-                  name="employeeid"
-                  id="employeeid"
+                  className="col-md-6 entry-input form-control fieldcolor"
                   onChange={(e) => setemployeeid(e.target.value)}
-                  value={employeeid}
+                  value={Employeeid}
                 >
                   <option value="">- - - Select Employee ID - - -</option>
-                  <option value="123456789">123456789</option>
-                  <option value="789456123">789456123</option>
-                  <option value="741852963">741852963</option>
-                  <option value="963852741">963852741</option>
+                  {filteremployeeid.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>

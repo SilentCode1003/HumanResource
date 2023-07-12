@@ -189,7 +189,7 @@ export const validatoremped = (
   };
 
 export const validatorempexp = (
-  employeeid,
+  Employeeid,
   company,
   jobtitle,
   jobdescription,
@@ -198,7 +198,7 @@ export const validatorempexp = (
   callback
   ) => {
     let message = "";
-    if (employeeid === "") {
+    if (Employeeid === "") {
       message += "Employee ID ";
     }
     if (company === "") {

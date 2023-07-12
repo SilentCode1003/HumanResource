@@ -1,19 +1,19 @@
-import { validatorgovid } from "../inputfield_validation/validator";
-import { validateNumberInput } from "../inputfield_validation/validator";
-import React, { useState, useEffect } from "react";
-import { usePostEmployeeGovernmentID } from "../API/submit/postEmpGovID";
-import { useRequestEmployeeDetails } from "../API/request/reqEmpDet";
+import { validatorempexp } from "../inputfield_validation/validator";
 import Swal from "sweetalert2";
+import React, { useState } from "react";
+import { usePostEmployeeExperience } from "../API/submit/postEmployeeWorkExperience";
+import { useRequestEmployeeDetails } from "../API/request/reqEmployeeDetails";
 
-const InputFieldsEmpGovID = () => {
-  const postEmpGovID = usePostEmployeeGovernmentID();
+const InputFieldsEmpExp = () => {
+  const postEmpExp = usePostEmployeeExperience();
   const EmployeeID = useRequestEmployeeDetails();
 
   const [Employeeid, setemployeeid] = useState("");
-  const [sssid, setsssid] = useState("");
-  const [pagibigid, setpagibigid] = useState("");
-  const [philhealth, setphilhealth] = useState("");
-  const [tinid, settinid] = useState("");
+  const [company, setcompany] = useState("");
+  const [jobtitle, setjobtitle] = useState("");
+  const [jobdescription, setInput3] = useState("");
+  const [startdate, setstartdate] = useState("");
+  const [enddate, setenddate] = useState("");
 
   //EmployeeID
   const employees = EmployeeID?.data?.data || [];
@@ -21,13 +21,14 @@ const InputFieldsEmpGovID = () => {
   console.log(filteremployeeid);
   console.log(Employeeid);
 
-  const validatorOnClick = async () => {
-    validatorgovid(
+  const validatorOnClick = () => {
+    validatorempexp(
       Employeeid,
-      sssid,
-      pagibigid,
-      philhealth,
-      tinid,
+      company,
+      jobtitle,
+      jobdescription,
+      startdate,
+      enddate,
       async (status, result) => {
         console.log(`STATUS: ${status} RESULT: ${result}`);
         if (!status) {
@@ -38,19 +39,18 @@ const InputFieldsEmpGovID = () => {
             icon: "error",
           });
         } else {
-          const EmployeeGovernmentID = {
+          const EmployeeExperience = {
             employeeid: Employeeid,
-            sssid: sssid,
-            pagibigid: pagibigid,
-            philhealth: philhealth,
-            tinid: tinid,
+            company: company,
+            jobtitle: jobtitle,
+            jobdescription: jobdescription,
+            startdate: startdate,
+            enddate: enddate,
           };
-          console.log(EmployeeGovernmentID);
+          console.log(EmployeeExperience);
 
           try {
-            const response = await postEmpGovID.mutateAsync(
-              EmployeeGovernmentID
-            );
+            const response = await postEmpExp.mutateAsync(EmployeeExperience);
             console.log(response.msg);
 
             if (response.msg === "success") {
@@ -63,7 +63,7 @@ const InputFieldsEmpGovID = () => {
             } else {
               Swal.fire({
                 title: "Error",
-                text: "Entry failed",
+                text: "ID IS ALREADY IN USE",
                 icon: "error",
                 confirmButtonText: "OK",
               });
@@ -75,15 +75,11 @@ const InputFieldsEmpGovID = () => {
               icon: "error",
             });
           }
-          console.log(postEmpGovID);
+          console.log(postEmpExp);
         }
       }
     );
   };
-
-  useEffect(() => {
-    validateNumberInput();
-  }, []);
 
   return (
     <div className="row mb-2 ">
@@ -92,7 +88,7 @@ const InputFieldsEmpGovID = () => {
           <div className="card-body inputfieldcolors">
             <div className="row">
               <div className="col-md-12 mb-2">
-                <h2 className="mb-4">Employee Government ID</h2>
+                <h2 className="mb-4">Employee Work Experience</h2>
                 <label className="form-label">Employee ID</label>
                 <select
                   className="col-md-6 entry-input form-control fieldcolor"
@@ -110,52 +106,62 @@ const InputFieldsEmpGovID = () => {
             </div>
             <div className="row mb-4">
               <div className="col-md-6">
-                <label className="form-label">SSS ID</label>
+                <label className="form-label">Company</label>
                 <input
-                  onChange={(e) => setsssid(e.target.value)}
-                  value={sssid}
-                  id="sssid"
-                  name="sssid"
+                  onChange={(e) => setcompany(e.target.value)}
+                  value={company}
+                  id="company"
+                  name="company"
                   type="text"
-                  className="form-control fieldcolor number-validator"
-                  placeholder="Enter SSS ID"
+                  className="form-control fieldcolor"
+                  placeholder="Enter company"
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label">Pag-IBIG ID</label>
+                <label className="form-label">Job Title</label>
                 <input
-                  onChange={(e) => setpagibigid(e.target.value)}
-                  value={pagibigid}
-                  id="pagibigid"
-                  name="pagibigid"
+                  onChange={(e) => setjobtitle(e.target.value)}
+                  value={jobtitle}
+                  id="jobtitle"
+                  name="jobtitle"
                   type="text"
-                  className="form-control fieldcolor number-validator"
-                  placeholder="Enter Pag-IBIG ID"
+                  className="form-control fieldcolor"
+                  placeholder="Enter job title"
                 />
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col-md-6">
-                <label className="form-label">Philhealth</label>
+              <div className="col-md-4">
+                <label className="form-label">Start Date</label>
                 <input
-                  onChange={(e) => setphilhealth(e.target.value)}
-                  value={philhealth}
-                  id="philhealth"
-                  name="philhealth"
-                  type="tel"
-                  className="form-control fieldcolor number-validator"
-                  placeholder="Enter philhealth"
+                  type="date"
+                  id="startdate"
+                  name="startdate"
+                  className="entry-input form-control fieldcolor"
+                  onChange={(e) => setstartdate(e.target.value)}
+                  value={startdate}
                 />
               </div>
-              <div className="col-md-6">
-                <label className="form-label">TIN ID</label>
+              <div className="col-md-4">
+                <label className="form-label">End Date</label>
                 <input
-                  onChange={(e) => settinid(e.target.value)}
-                  value={tinid}
-                  id="tinid"
-                  name="tinid"
-                  className="form-control fieldcolor number-validator"
-                  placeholder="Enter TIN ID"
+                  type="date"
+                  id="enddate"
+                  name="enddate"
+                  className="entry-input form-control fieldcolor"
+                  onChange={(e) => setenddate(e.target.value)}
+                  value={enddate}
+                />
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Job Description</label>
+                <input
+                  onChange={(e) => setInput3(e.target.value)}
+                  value={jobdescription}
+                  id="jobdescription"
+                  name="jobdescription"
+                  className="form-control fieldcolor"
+                  placeholder="Enter job description"
                 />
               </div>
             </div>
@@ -178,4 +184,4 @@ const InputFieldsEmpGovID = () => {
   );
 };
 
-export default InputFieldsEmpGovID;
+export default InputFieldsEmpExp;

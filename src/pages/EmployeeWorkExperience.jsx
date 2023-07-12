@@ -1,16 +1,17 @@
 import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
-import InputFieldsEmpExp from "../components/InputFieldsEmpExp";
+import InputFieldsEmpExp from "../components/InputFieldsEmployeeWorkExperience";
 import ActionBtn from "../components/buttons";
-import { useRequestEmployeeExperience } from "../API/request/reqEmpExp";
+import { useRequestEmployeeExperience } from "../API/request/reqEmployeeWorkExperience";
 
 function EmployeeWorkExperience() {
   const employeeworkexperiencedata = useRequestEmployeeExperience();
-  const filter = employeeworkexperiencedata?.data?.data||[];
+  const filterfortable = employeeworkexperiencedata?.data?.data||[];
   const btn = (row) => {
     return <ActionBtn />
   }
+  console.log(filterfortable);
   const tableColumns = [
     "Employee ID",
     "Company",
@@ -29,7 +30,7 @@ function EmployeeWorkExperience() {
       <InputFieldsEmpExp />
       <DynamicTable
         header={tableColumns}
-        data={filter}
+        data={filterfortable}
         title="Employee Work Experience Table"
         renderButtons={btn}
       />

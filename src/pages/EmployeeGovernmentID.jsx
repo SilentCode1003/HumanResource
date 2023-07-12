@@ -1,9 +1,9 @@
 import "../assets/style2.css";
 import Header from "../components/Header";
 import DynamicTable from "../components/DynamicTable";
-import InputFieldsEmpGovID from "../components/InputFieldsEmpGovID";
+import InputFieldsEmpGovID from "../components/InputFieldsEmployeeGovernmentID";
 import ActionBtn from "../components/buttons";
-import { useRequestEmployeeGovernmentID } from "../API/request/reqEmpGovID";
+import { useRequestEmployeeGovernmentID } from "../API/request/reqEmployeeGovernmentID";
 
 function EmployeeGovernmentID() {
   const employeegovernmentiddata = useRequestEmployeeGovernmentID();
